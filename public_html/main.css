@@ -1,7 +1,9 @@
 body {
-  background-color: #ffafcf
+  background-color: #ffafcf;
 }
 
 h1 {
-  color: #040008
+  color: #040008;
+
+  font-size: 4em;
 }
