@@ -1,13 +1,17 @@
+:root {
+    color-scheme: light dark;
+}
+
 body {
-    background-color: #181020;
+    background-color: light-dark(#c0b0b8, #181020);
     
-    color: #c0b0b8;
+    color: light-dark(#181020, #c0b0b8);
     
     font-family: sans-serif;
 }
 
 h1 {
-    color: #908088;
+    color: light-dark(#484050, #908088);
     
     text-align: center;
     
@@ -17,7 +21,7 @@ h1 {
 }
 
 h2 {
-    color: #908088;
+    color: light-dark(#484050, #908088);
     
     text-align: left;
     
@@ -25,21 +29,35 @@ h2 {
     
     font-family: sans-serif;
     
-    border-bottom: 2px solid #908088;
+    border-bottom: 2px solid light-dark(#484050, #908088);
 }
 
 a:link {
-    color: #ffffff;
+    color: light-dark(#000000, #ffffff);
+    
+    text-decoration: none;
+    
+    font-weight: bold;
 }
 
 a:visited {
-    color: #804040;
+    color: light-dark(#402020, #804040);
+    
+    text-decoration: none;
+    
+    font-weight: bold;
 }
 
 a:hover {
-    color: #a0a0a0;
+    color: light-dark(#303030, #a0a0a0);
+    
+    text-decoration: underline;
+    
+    font-weight: bold;
 }
 
 a:active {
     text-decoration: none;
+    
+    font-weight: bold;
 }
