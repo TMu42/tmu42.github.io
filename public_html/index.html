@@ -6,9 +6,32 @@
     <link rel="stylesheet" href="main.css?r=95" />
     
     <link rel="icon" type="image/png" id="favicon-link" />
+    
+    <script>
+      const favLnk = document.getElementById("favicon-link");
+      
+      const dark = window.matchMedia("(prefers-color-scheme: dark)");
+      
+      const updateTheme = () => {
+        const titIm0 = document.getElementById("title-image0");
+        const titIm1 = document.getElementById("title-image1");
+        
+        if(dark.matches) {
+          favLnk.href = "./favicon-white.png";
+          titIm0.src = "./favicon-light.png";
+          titIm1.src = "./favicon-light.png";
+        } else {
+          favLnk.href = "./favicon-black.png";
+          titIm0.src = "./favicon-dark.png";
+          titIm1.src = "./favicon-dark.png";
+        }
+      };
+      
+      setInterval(updateTheme, 500);
+    </script>
   </head>
   
-  <body>
+  <body onload="updateTheme()">
     <h1>
       <img alt="µ" height=50 width=50 id="title-image0">
       
@@ -39,29 +62,5 @@
       
       <li>A repository of sorting algorithms implemented in c.</li>
     </ul>
-    
-    <script>
-      const favLnk = document.getElementById("favicon-link");
-      const titIm0 = document.getElementById("title-image0");
-      const titIm1 = document.getElementById("title-image1");
-      
-      const dark = window.matchMedia("(prefers-color-scheme: dark)");
-      
-      const updateTheme = () => {
-        if(dark.matches) {
-          favLnk.href = "./favicon-white.png";
-          titIm0.src = "./favicon-light.png";
-          titIm1.src = "./favicon-light.png";
-        } else {
-          favLnk.href = "./favicon-black.png";
-          titIm0.src = "./favicon-dark.png";
-          titIm1.src = "./favicon-dark.png";
-        }
-      };
-      
-      updateTheme();
-      
-      setInterval(updateTheme, 1000);
-    </script>
   </body>
 </html>
