@@ -1,13 +1,13 @@
 body {
     background-color: #181020;
     
-    color: #ffeff7;
+    color: #c0b0b8;
     
     font-family: sans-serif;
 }
 
 h1 {
-    color: #8f7f87;
+    color: #908088;
     
     text-align: center;
     
@@ -17,15 +17,29 @@ h1 {
 }
 
 h2 {
-    color: #8f7f87;
+    color: #908088;
     
     text-align: left;
     
     font-size: 2em;
     
     font-family: sans-serif;
+    
+    border-bottom: 2px solid #908088;
 }
 
-h2:after {
-    content: '<hr>';
+a:link {
+    color: #ffffff;
+}
+
+a:visited {
+    color: #804040;
+}
+
+a:hover {
+    color: #a0a0a0;
+}
+
+a:active {
+    text-decoration: none;
 }
