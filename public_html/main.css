@@ -27,5 +27,5 @@ h2 {
 }
 
 h2:after {
-    content: '\a0';
+    content: '<hr>';
 }
