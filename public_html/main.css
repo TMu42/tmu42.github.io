@@ -2,6 +2,8 @@ body {
     background-color: #181020;
     
     color: #ffeff7;
+    
+    font-family: sans-serif;
 }
 
 h1 {
@@ -22,4 +24,8 @@ h2 {
     font-size: 2em;
     
     font-family: sans-serif;
+}
+
+h2:after {
+    content: '\a0';
 }
