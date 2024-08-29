@@ -76,50 +76,66 @@ a:active {
 
 td.menu-bar {
     border: 2px solid light-dark(#908088, #484050);
+    
+    cursor: pointer;
+}
+
+div.drop-down {
+    border: 2px solid light-dark(#908088, #484050);
+    
+    cursor: pointer;
+    
+    margin-bottom: 2px;
+    
+    padding-left:  10px;
+    padding-right: 10px;
 }
 
 
 #menu-bar {
     background-color: light-dark(#484050, #908088);
     
-    width: 100%;
-    
+    width:  100%;
     height: 50px;
     
     color: light-dark(#c0b0b8, #181020);
     
     font-weight: bold;
     
-    font-size: 1.4em;
+    font-size: 2rem;
     
     text-align: center;
 }
 
 #usr {
     width: 50px;
-    
-    font-size: 2rem;
-    
-    cursor: pointer;
+}
+
+#home {
+    width: 50px;
 }
 
 #hamburger {
     width: 50px;
-    
-    font-size: 2rem;
-    
-    cursor: pointer;
 }
 
 #hamburger-drop-menu {
-    background-color: green;
+    background-color: light-dark(#484050, #908088);
+    
+    color: light-dark(#c0b0b8, #181020);
+    
+    font-weight: bold;
+    
+    font-size: 1.6rem;
+    
+    text-align: center;
     
     display: none;
-    
-    height: 300px;
-    width:  150px;
     
     position: absolute;
     
     right: 15%;
+    
+    padding-left:  2px;
+    padding-right: 2px;
 }

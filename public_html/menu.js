@@ -1,21 +1,18 @@
 
 const user = document.getElementById("usr");
+const home = document.getElementById("home");
 const hmbg = document.getElementById("hamburger");
 const menu = document.getElementById("menu-bar");
 const drop = document.getElementById("hamburger-drop-menu");
 const body = document.getElementById("body");
 
 const setActions = () => {
-    user.setAttribute("onclick", "location.href='https://github.com/TMu42';");
-    
+    user.addEventListener("click", linkButton);
+    home.addEventListener("click", linkButton);
     hmbg.addEventListener("click", toggleHamburger);
     drop.addEventListener("click", stopProp);
     
     document.addEventListener("click", hideHamburger);
-    
-    //hmbg.setAttribute("onclick", "toggleHamburger();");
-    
-    //body.setAttribute("onclick", "hideHamburger();");
 };
 
 
@@ -28,15 +25,26 @@ function toggleVisible(element) {
 };
 
 
+function linkButton(event) {
+    const buttonId = event.currentTarget.id;
+    
+    if (buttonId === "usr") {
+        location.href = "https://github.com/TMu42";
+    } else if (buttonId === "home") {
+        location.href = "https://tmu42.github.io/";
+    }
+};
+
+
 function toggleHamburger(event) {
     event.stopPropagation();
     
-    toggleVisible(drop);
+    //toggleVisible(drop);
     
     if(hmbg.innerHTML === '☰') {
-        hmbg.innerHTML = 'x';
+        showHamburger(event);
     } else {
-        hmbg.innerHTML = '☰';
+        hideHamburger(event);
     }
 };
 
@@ -44,11 +52,14 @@ function toggleHamburger(event) {
 function hideHamburger(event) {
     drop.style.display = "none";
     
-    if(hmbg.innerHTML === '☰') {
-        hmbg.innerHTML = 'x';
-    } else {
-        hmbg.innerHTML = '☰';
-    }
+    hmbg.innerHTML = '☰';
+};
+
+
+function showHamburger(event) {
+    drop.style.display = "block";
+    
+    hmbg.innerHTML = 'x';
 };
 
 
