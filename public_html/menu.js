@@ -16,6 +16,8 @@ const setActions = () => {
 };
 
 
+var hamburger = false;
+
 function toggleVisible(element) {
     if(element.style.display === "block") {
         element.style.display = "none";
@@ -37,13 +39,16 @@ function linkButton(event) {
 
 
 function toggleHamburger(event) {
-    if(event.target === hmbg) {
-        if(hmbg.innerHTML === '☰') {
-            showHamburger(event);
-        } else {
+    const burgerChild = [hmbg, ...getDescendants(hmbg)];
+    const dropChild   = [drop, ...getDescendants(drop)];
+    
+    if(burgerChild.includes(event.target)) {
+        if(hamburger) {
             hideHamburger(event);
+        } else {
+            showHamburger(event);
         }
-    } else if(!(event.target === drop)) {
+    } else if(!dropChild.includes(event.target)) {
         hideHamburger(event);
     }
 };
@@ -53,6 +58,8 @@ function hideHamburger(event) {
     drop.style.display = "none";
     
     hmbg.innerHTML = '☰';
+    
+    hamburger = false;
 };
 
 
@@ -60,12 +67,25 @@ function showHamburger(event) {
     drop.style.display = "block";
     
     hmbg.innerHTML = 'x';
+    
+    hamburger = true;
 };
 
 
 function stopProp(event) {
     event.stopPropagation();
-}
+};
+
+
+function getDescendants(elem, all = []) {
+    all.push(...elem.childNodes);
+    
+    for (const child of elem.childNodes) {
+        getDescendants(child, all);
+    }
+    
+    return all;
+};
 
 
 setActions();
