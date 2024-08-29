@@ -16,6 +16,9 @@ darkButton.addEventListener("click", changeTheme);
 
 var mode = "auto";
 
+autoButton.style.setProperty("background-color",
+                             "light-dark(#686070, #706068)");
+
 
 function updateTheme() {
     if(mode == "dark" || (mode == "auto" && dark.matches)) {
@@ -56,8 +59,7 @@ function changeTheme(event) {
     } else if(autoChild.includes(event.target)) {
         mode = "auto";
         
-        document.documentElement.style.setProperty("color-scheme",
-                                                   "light dark");
+        document.documentElement.style.removeProperty("color-scheme");
         
         autoButton.style.setProperty("background-color",
                                      "light-dark(#686070, #706068)");
