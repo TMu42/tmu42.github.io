@@ -9,7 +9,6 @@ const body = document.getElementById("body");
 const setActions = () => {
     user.addEventListener("click", linkButton);
     home.addEventListener("click", linkButton);
-//    hmbg.addEventListener("click", toggleHamburger);
     drop.addEventListener("click", stopProp);
     
     document.addEventListener("click", toggleHamburger);

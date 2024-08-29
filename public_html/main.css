@@ -80,6 +80,10 @@ td.menu-bar {
     cursor: pointer;
 }
 
+td.menu-bar:hover {
+    background-color: light-dark(#686070, #706068);
+}
+
 div.drop-down {
     border: 2px solid light-dark(#908088, #484050);
     
@@ -89,6 +93,10 @@ div.drop-down {
     
     padding-left:  10px;
     padding-right: 10px;
+}
+
+div.drop-down:hover {
+    background-color: light-dark(#686070, #706068);
 }
 
 
