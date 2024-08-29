@@ -14,10 +14,38 @@ lightButton.addEventListener("click", changeTheme);
 autoButton.addEventListener("click", changeTheme);
 darkButton.addEventListener("click", changeTheme);
 
-var mode = "auto";
+var mode;
 
-autoButton.style.setProperty("background-color",
-                             "light-dark(#686070, #706068)");
+//autoButton.style.setProperty("background-color",
+//                             "light-dark(#686070, #706068)");
+
+
+function detectTheme() {
+    var cookieTheme = getCookie("theme");
+    
+    if(cookieTheme === "dark") {
+        mode = "dark";
+        
+        document.documentElement.style.setProperty("color-scheme", "dark");
+        
+        darkButton.style.setProperty("background-color",
+                                     "light-dark(#686070, #706068)");
+    } else if(cookieTheme === "light") {
+        mode = "light";
+        
+        document.documentElement.style.setProperty("color-scheme", "light");
+        
+        lightButton.style.setProperty("background-color",
+                                      "light-dark(#686070, #706068)");
+    } else {
+        mode = "light";
+        
+        document.documentElement.style.removeProperty("color-scheme");
+        
+        autoButton.style.setProperty("background-color",
+                                     "light-dark(#686070, #706068)");
+    }
+};
 
 
 function updateTheme() {
@@ -49,6 +77,8 @@ function changeTheme(event) {
         
         darkButton.style.setProperty("background-color",
                                      "light-dark(#686070, #706068)");
+        
+        setCookie("theme", "dark");
     } else if(lightChild.includes(event.target)) {
         mode = "light";
         
@@ -56,6 +86,8 @@ function changeTheme(event) {
         
         lightButton.style.setProperty("background-color",
                                       "light-dark(#686070, #706068)");
+        
+        setCookie("theme", "light");
     } else if(autoChild.includes(event.target)) {
         mode = "auto";
         
@@ -63,12 +95,14 @@ function changeTheme(event) {
         
         autoButton.style.setProperty("background-color",
                                      "light-dark(#686070, #706068)");
+        
+        delCookie("theme");
     }
     
     updateTheme();
 };
 
-
+detectTheme();
 updateTheme();
 
 setInterval(updateTheme, 500);
