@@ -9,10 +9,10 @@ const body = document.getElementById("body");
 const setActions = () => {
     user.addEventListener("click", linkButton);
     home.addEventListener("click", linkButton);
-    hmbg.addEventListener("click", toggleHamburger);
+//    hmbg.addEventListener("click", toggleHamburger);
     drop.addEventListener("click", stopProp);
     
-    document.addEventListener("click", hideHamburger);
+    document.addEventListener("click", toggleHamburger);
 };
 
 
@@ -37,13 +37,13 @@ function linkButton(event) {
 
 
 function toggleHamburger(event) {
-    event.stopPropagation();
-    
-    //toggleVisible(drop);
-    
-    if(hmbg.innerHTML === '☰') {
-        showHamburger(event);
-    } else {
+    if(event.target === hmbg) {
+        if(hmbg.innerHTML === '☰') {
+            showHamburger(event);
+        } else {
+            hideHamburger(event);
+        }
+    } else if(!(event.target === drop)) {
         hideHamburger(event);
     }
 };
