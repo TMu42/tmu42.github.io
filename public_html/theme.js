@@ -16,9 +16,6 @@ darkButton.addEventListener("click", changeTheme);
 
 var mode;
 
-//autoButton.style.setProperty("background-color",
-//                             "light-dark(#686070, #706068)");
-
 
 function detectTheme() {
     var cookieTheme = getCookie("theme");
@@ -38,7 +35,7 @@ function detectTheme() {
         lightButton.style.setProperty("background-color",
                                       "light-dark(#686070, #706068)");
     } else {
-        mode = "light";
+        mode = "auto";
         
         document.documentElement.style.removeProperty("color-scheme");
         

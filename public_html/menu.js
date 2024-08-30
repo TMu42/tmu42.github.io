@@ -1,4 +1,3 @@
-
 const user = document.getElementById("usr");
 const home = document.getElementById("home");
 const hmbg = document.getElementById("hamburger");

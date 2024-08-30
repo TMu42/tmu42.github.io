@@ -7,9 +7,9 @@
     
     <link rel="icon" type="image/png" id="favicon-link" />
     
-    <script src="main.js?r=87"  type="text/javascript"></script>
-    <script src="theme.js?r=87" type="text/javascript" defer="defer"></script>
-    <script src="menu.js?r=87"  type="text/javascript" defer="defer"></script>
+    <script src="main.js?r=85"  type="text/javascript"></script>
+    <script src="theme.js?r=85" type="text/javascript" defer="defer"></script>
+    <script src="menu.js?r=85"  type="text/javascript" defer="defer"></script>
   </head>
   
   <body id="body">
@@ -38,20 +38,25 @@
     </table>
     
     <div id="hamburger-drop-menu">
-      <div class="drop-down" id="theme-select">
+      <div class="drop-down-outer" id="theme-select">
         <table>
           <tr>
             <td>Theme {</td>
             
             <td>
-              <div class="drop-down" id="light-button" title="Theme">
-                Light Mode
+              <div class="drop-down-inner"
+                   id="light-button" title="Light Theme">
+                Light
               </div>
-              <div class="drop-down" id="auto-button"  title="Theme">
-                Automatic
+              
+              <div class="drop-down-inner"
+                   id="dark-button" title="Dark Theme">
+                Dark
               </div>
-              <div class="drop-down" id="dark-button"  title="Theme">
-                Dark Mode
+              
+              <div class="drop-down-inner"
+                   id="auto-button" title="Infer Theme from Environment">
+                Auto
               </div>
             </td>
           </tr>
