@@ -21,6 +21,8 @@ h1 {
     font-size: 4em;
     
     font-family: cursive;
+    
+    user-select: none;
 }
 
 h2 {
@@ -148,6 +150,10 @@ span.big-brace {
     font-weight: lighter;
 }
 
+td.menu-noop, div.menu-noop {
+    cursor: not-allowed;
+}
+
 
 #menu-bar {
     background-color: light-dark(#484050, #908088);
@@ -162,6 +168,8 @@ span.big-brace {
     font-size: 2rem;
     
     text-align: center;
+    
+    user-select: none;
 }
 
 #usr {
@@ -195,4 +203,6 @@ span.big-brace {
     
     padding-left:  2px;
     padding-right: 2px;
+    
+    user-select: none;
 }
