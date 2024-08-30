@@ -99,6 +99,29 @@ div.drop-down:hover {
     background-color: light-dark(#686070, #706068);
 }
 
+div.drop-down-outer {
+    border: 2px solid light-dark(#908088, #484050);
+    
+    cursor: default;
+    
+    margin-bottom: 2px;
+}
+
+div.drop-down-inner {
+    border: 2px solid light-dark(#908088, #484050);
+    
+    cursor: pointer;
+    
+    margin-bottom: 2px;
+    
+    padding-left:  10px;
+    padding-right: 10px;
+}
+
+div.drop-down-inner:hover {
+    background-color: light-dark(#686070, #706068);
+}
+
 
 #menu-bar {
     background-color: light-dark(#484050, #908088);
