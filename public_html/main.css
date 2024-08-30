@@ -93,6 +93,8 @@ div.drop-down {
     
     padding-left:  10px;
     padding-right: 10px;
+    padding-top:    5px;
+    padding-bottom: 5px;
 }
 
 div.drop-down:hover {
@@ -105,6 +107,9 @@ div.drop-down-outer {
     cursor: default;
     
     margin-bottom: 2px;
+    
+    padding-left:  10px;
+    padding-right:  0px;
 }
 
 div.drop-down-inner {
@@ -116,10 +121,22 @@ div.drop-down-inner {
     
     padding-left:  10px;
     padding-right: 10px;
+    padding-top:    3px;
+    padding-bottom: 3px;
 }
 
 div.drop-down-inner:hover {
     background-color: light-dark(#686070, #706068);
+}
+
+table.drop-down-table {
+    margin-right: 0px;
+    margin-left:  auto;
+}
+
+span.big-brace {
+    font-size:   3em;
+    font-weight: lighter;
 }
 
 
