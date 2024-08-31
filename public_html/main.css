@@ -174,7 +174,12 @@ td.menu-noop, div.menu-noop {
     
     text-align: center;
     
+    cursor: default;
+    
     user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 #usr {
