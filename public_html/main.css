@@ -22,7 +22,12 @@ h1 {
     
     font-family: cursive;
     
+    cursor: default;
+    
     user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 h2 {
@@ -204,5 +209,10 @@ td.menu-noop, div.menu-noop {
     padding-left:  2px;
     padding-right: 2px;
     
+    cursor: default;
+    
     user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
