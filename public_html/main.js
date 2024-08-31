@@ -23,20 +23,30 @@ function getDescendants(elem, all = []) {
 };
 
 
-function setCookie(name, value, expiry, path) {
+function setCookie(name, value, maxAge, path) {
     var keyVal  = name + '=' + value + ';';
-    var expires = "";
-    var pathStr = "path=/";
-    
-    if(expiry !== undefined && expiry !== null) {
-        expires = "expires=" + expiry + ';';
-    }
+    var domain  = "";
+    var pathStr = "Path=/;";
+  //var expires = "Max-Age=31557600000;"; // 1000 years with the 4 year rule
+    var expires = "Max-Age=31556952000;"; // 1000 years with the 100, 400 rule
+    var secure  = "Secure;";
+    var site    = "SameSite=Strict;"
     
     if(path !== undefined && path !== null) {
-        pathStr = "path=" + path + ';'
+        pathStr = "Path=" + path + ';';
+    } else {
+        path = "/";
     }
     
-    document.cookie = keyVal + expires + pathStr;
+    if(maxAge !== undefined && maxAge !== null) {
+        expires = "Max-Age=" + maxAge + ';';
+    }
+    
+    document.cookie = keyVal + domain + pathStr + expires + secure + site;
+    /*
+    console.log("Added cookie named '" + name + "' with value '" + value + "'");
+    console.log(" and path '" + path + "'");
+    console.log(document.cookie);*/
 };
 
 
@@ -60,6 +70,8 @@ function delCookie(name, path) {
         path = "/";
     }
     
-    document.cookie = name + "=; path=" + path
-                    + "; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    document.cookie = name + "=;path=" + path + ";Max-Age=0;SameSite=Strict;";
+    /*
+    console.log("Deleted cookie named '" + name + "' with path '" + path + "'");
+    console.log(document.cookie);*/
 };
