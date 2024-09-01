@@ -221,3 +221,31 @@ td.menu-noop, div.menu-noop {
     -moz-user-select: none;
     -webkit-user-select: none;
 }
+
+#footer {
+    background-color: light-dark(#484050, #908088);
+    
+    color: light-dark(#c0b0b8, #181020);
+    
+    font-size: 0.8rem;
+    
+    max-width: 100%;
+    
+    padding-left:   50px;
+    padding-right:  50px;
+    padding-top:    20px;
+    padding-bottom: 20px;
+    
+    font-weight: bold;
+    /*
+    font-size: 2rem;
+    
+    text-align: center;
+    */
+    cursor: default;
+    
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
