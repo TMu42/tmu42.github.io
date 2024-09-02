@@ -1,17 +1,20 @@
 div.page-grid {
     display: grid;
     
-    grid-template-columns: auto auto auto auto;
+    text-align: center;
     
-    column-gap: 2%;
-    row-gap:    2%;
-}
-
-div.grid-box {
-    width:  auto;
-    height: auto;
+    font-size: 1.2rem;
     
-    border: solid 1px green;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    gap: 2%;
+    
+    cursor: default;
+    
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 div.inner-box {
@@ -19,18 +22,26 @@ div.inner-box {
     
     margin: auto;
     
-    width:  90%;
-    height: 90%;
+    margin-top:    5%;
+    margin-bottom: 5%;
     
-    border: solid 1px red;
+    padding-top:    5%;
+    
+    width:  90%;
+    
+    cursor: pointer;
+    
+    border: solid 2px light-dark(#484050, #908088);
 }
 
 div.inner-box:hover {
+    margin-top:    0%;
+    margin-bottom: 0%;
+    
     width:  100%;
-    height: 100%;
 }
 
-div.grid-box img {
-    width:  100%;
+div.inner-box img {
+    width:   90%;
     height: auto;
 }
