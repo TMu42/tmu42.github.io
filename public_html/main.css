@@ -90,7 +90,7 @@ a:active {
 
 
 .inverse a {
-    font-weight: bolder;
+    font-weight: 900;
     
     text-decoration: none;
 }
@@ -120,6 +120,8 @@ a:active {
     color: light-dark(#c0b0b8, #181020);
     
     font-size: 0.8rem;
+    
+    font-weight: 600;
     
     max-width: 100%;
     
