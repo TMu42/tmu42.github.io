@@ -96,67 +96,54 @@ div.grid-box img {
     height: auto;
 }
 
-a:link {
-    color: light-dark(#000000, #ffffff);
-    
+a {
     text-decoration: none;
     
     font-weight: bold;
 }
 
+a:link {
+    color: light-dark(#000000, #ffffff);
+}
+
 a:visited {
     color: light-dark(#402020, #804040);
-    
-    text-decoration: none;
-    
-    font-weight: bold;
 }
 
 a:hover {
     color: light-dark(#303030, #a0a0a0);
     
     text-decoration: underline;
-    
-    font-weight: bold;
 }
 
 a:active {
     text-decoration: none;
-    
-    font-weight: bold;
 }
 
 
-.inverse a:link {
-    color: light-dark(#ffffff, #000000);
+.inverse a {
+    font-weight: bolder;
     
     text-decoration: none;
-    
-    font-weight: bold;
+}
+
+.inverse a:link {
+    color: light-dark(#ffffff, #000000);
 }
 
 .inverse a:visited {
     color: light-dark(#b04040, #501010);
-    
-    text-decoration: none;
-    
-    font-weight: bold;
 }
 
 .inverse a:hover {
-    color: light-dark(#a0a0a0. #303030);
+    color: light-dark(#d0d0d0, #101010);
     
     text-decoration: underline;
-    
-    font-weight: bold;
 }
 
 .inverse a:active {
     text-decoration: none;
-    
-    font-weight: bold;
 }
-
 
 td.menu-bar {
     border: 2px solid light-dark(#908088, #484050);
@@ -303,12 +290,8 @@ td.menu-noop, div.menu-noop {
     padding-right:  50px;
     padding-top:    20px;
     padding-bottom: 20px;
-    
-    font-weight: bold;
     /*
-    font-size: 2rem;
-    
-    text-align: center;
+    font-weight: bold;
     */
     cursor: default;
     
