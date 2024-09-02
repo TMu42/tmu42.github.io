@@ -90,7 +90,7 @@ a:active {
 
 
 .inverse a {
-    font-weight: 900;
+    font-weight: bold;
     
     text-decoration: none;
 }
@@ -121,7 +121,7 @@ a:active {
     
     font-size: 0.8rem;
     
-    font-weight: 600;
+    font-weight: normal;
     
     max-width: 100%;
     
