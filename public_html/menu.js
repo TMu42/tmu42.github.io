@@ -1,5 +1,8 @@
 const user = document.getElementById("usr");
 const home = document.getElementById("home");
+const feat = document.getElementById("featured");
+const actv = document.getElementById("active");
+const futr = document.getElementById("future");
 const hmbg = document.getElementById("hamburger");
 const menu = document.getElementById("menu-bar");
 const drop = document.getElementById("hamburger-drop-menu");
@@ -8,6 +11,10 @@ const body = document.getElementById("body");
 const setActions = () => {
     user.addEventListener("click", linkButton);
     home.addEventListener("click", linkButton);
+    feat.addEventListener("click", linkButton);
+    actv.addEventListener("click", linkButton);
+    futr.addEventListener("click", linkButton);
+    
     drop.addEventListener("click", stopProp);
     
     document.addEventListener("click", toggleHamburger);
@@ -20,10 +27,16 @@ var hamburger = false;
 function linkButton(event) {
     const buttonId = event.currentTarget.id;
     
-    if (buttonId === "usr") {
+    if(buttonId === "usr") {
         location.href = "https://github.com/TMu42";
-    } else if (buttonId === "home") {
+    } else if(buttonId === "home") {
         location.href = "https://tmu42.github.io/";
+    } else if(buttonId === "featured") {
+        location.href = "https://tmu42.github.io/#Featured Projects"
+    } else if(buttonId === "active") {
+        location.href = "https://tmu42.github.io/#Active Projects"
+    } else if(buttonId === "future") {
+        location.href = "https://tmu42.github.io/#Future Projects"
     }
 };
 
