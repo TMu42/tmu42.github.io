@@ -8,6 +8,10 @@ td.menu-bar:hover {
     background-color: light-dark(#686070, #706068);
 }
 
+td.menu-square {
+    width: 50px;
+}
+
 div.drop-down {
     border: 2px solid light-dark(#908088, #484050);
     
@@ -88,10 +92,6 @@ td.menu-noop, div.menu-noop {
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-}
-
-#usr, #home, #hamburger {
-    width: 50px;
 }
 
 #hamburger-drop-menu {

@@ -3,18 +3,20 @@
   <head>
     <title>TMu42</title>
 
-    <link rel="stylesheet" href="main.css?r=79" />
-    <link rel="stylesheet" href="menu.css?r=79" />
-    <link rel="stylesheet" href="grid.css?r=79" />
+    <link rel="stylesheet" href="main.css?r=78" />
+    <link rel="stylesheet" href="menu.css?r=78" />
+    <link rel="stylesheet" href="grid.css?r=78" />
     
     <link rel="icon" type="image/png" id="favicon-link" />
     
-    <script src="main.js?r=79"  type="text/javascript"></script>
-    <script src="theme.js?r=79" type="text/javascript" defer="defer"></script>
-    <script src="menu.js?r=79"  type="text/javascript" defer="defer"></script>
+    <script src="main.js?r=78"  type="text/javascript"></script>
+    <script src="theme.js?r=78" type="text/javascript" defer="defer"></script>
+    <script src="menu.js?r=78"  type="text/javascript" defer="defer"></script>
   </head>
   
   <body id="body">
+    <!--Constant Page Header Region--><!--Constant Page Header Region-->
+    <!--Site Title-->
     <h1>
       <img alt="µ" id="title-image0">
       
@@ -22,21 +24,37 @@
       
       <img alt="µ" id="title-image1">
     </h1>
+    <!--/Site Title-->
     
+    <!--Menu Bar-->
     <table id="menu-bar">
       <tr>
-        <td class="menu-bar" id="usr" title="TMu42@GitHub">⚛&#xFE0E;</td>
+        <td class="menu-bar menu-square" id="usr" title="TMu42@GitHub">
+          &#x269b;&#xFE0E; <!--atom + text version modifier-->
+        </td>
         
-        <td class="menu-bar" id="home" title="Home">⌂</td>
+        <td class="menu-bar menu-square" id="home" title="Home">⌂</td>
         
+        <td class="menu-bar" id="featured" title="Featured Projects">
+          Featured
+        </td>
+        
+        <td class="menu-bar" id="active" title="Active Projects">Active</td>
+        
+        <td class="menu-bar" id="future" title="Future Projects">Future</td>
+        
+        <!--
         <td class="menu-bar menu-noop" title="Nothing to see here... yet">
           Menu Bar Coming Soon...
         </td>
+        -->
         
-        <td class="menu-bar" id="hamburger" title="Menu">☰</td>
+        <td class="menu-bar menu-square" id="hamburger" title="Menu">☰</td>
       </tr>
     </table>
+    <!--/Menu Bar-->
     
+    <!--Drop Down Menu-->
     <div id="hamburger-drop-menu">
       <div class="drop-down-outer" id="theme-select">
         <table class=drop-down-table>
@@ -67,6 +85,7 @@
         </table>
       </div>
       
+      <!--
       <div class="drop-down menu-noop" title="Nothing to see here... yet">
         Drop Down
       </div>
@@ -78,8 +97,12 @@
       <div class="drop-down menu-noop" title="Nothing to see here... yet">
         Coming Soon...
       </div>
+      -->
     </div>
+    <!--/Drop Down Menu-->
+    <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
     
+    <!--Variable Page Body Region--><!--Variable Page Body Region-->
     <h2>Home</h2>
     
     <div class="page-content">
@@ -109,11 +132,11 @@
       </p>
     </div>
     
-    <h2>Featured Project</h2>
+    <h2 id="Featured Projects">Featured Projects</h2>
     
     <div class="page-content"></div>
     
-    <h2>Active Projects</h2>
+    <h2 id="Active Projects">Active Projects</h2>
     
     <div class="page-content">
       <ul class="page-content">
@@ -128,9 +151,14 @@
       </ul>
     </div>
 
-    <h2>These Projects Coming Soon</h2>
+    <h2 id="Future Projects">Future Projects</h2>
     
     <div class="page-content">
+      <p>
+        These projects are currently in development and will be published when
+        they reach MVP status:
+      </p>
+      
       <ul class="page-content">
         <li>A repository of solutions to Advent of Code.</li>
         
@@ -139,7 +167,9 @@
         <li>A repository of sorting algorithms implemented in C.</li>
       </ul>
     </div>
+    <!--/Variable Page Body Region--><!--/Variable Page Body Region-->
     
+    <!--Constant Page Footer Region--><!--Constant Page Footer Region-->
     <div class="inverse" id="footer">
       <p class="inverse">
         We would like to acknowledge the Awabakal, Jagera and Turrbal peoples
@@ -195,5 +225,6 @@
       
       <p>Copyright © 2024 TMu42, All Rights Reserved</p>
     </div>
+    <!--/Constant Page Footer Region--><!--/Constant Page Footer Region-->
   </body>
 </html>
