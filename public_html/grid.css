@@ -1,0 +1,36 @@
+div.page-grid {
+    display: grid;
+    
+    grid-template-columns: auto auto auto auto;
+    
+    column-gap: 2%;
+    row-gap:    2%;
+}
+
+div.grid-box {
+    width:  auto;
+    height: auto;
+    
+    border: solid 1px green;
+}
+
+div.inner-box {
+    display: block;
+    
+    margin: auto;
+    
+    width:  90%;
+    height: 90%;
+    
+    border: solid 1px red;
+}
+
+div.inner-box:hover {
+    width:  100%;
+    height: 100%;
+}
+
+div.grid-box img {
+    width:  100%;
+    height: auto;
+}
