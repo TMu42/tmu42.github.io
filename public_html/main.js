@@ -43,10 +43,6 @@ function setCookie(name, value, maxAge, path) {
     }
     
     document.cookie = keyVal + domain + pathStr + expires + secure + site;
-    /*
-    console.log("Added cookie named '" + name + "' with value '" + value + "'");
-    console.log(" and path '" + path + "'");
-    console.log(document.cookie);*/
 };
 
 
@@ -71,7 +67,4 @@ function delCookie(name, path) {
     }
     
     document.cookie = name + "=;path=" + path + ";Max-Age=0;SameSite=Strict;";
-    /*
-    console.log("Deleted cookie named '" + name + "' with path '" + path + "'");
-    console.log(document.cookie);*/
 };
