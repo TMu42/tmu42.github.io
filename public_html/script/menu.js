@@ -30,13 +30,13 @@ function linkButton(event) {
     if(buttonId === "usr") {
         location.href = "https://github.com/TMu42";
     } else if(buttonId === "home") {
-        location.href = "https://tmu42.github.io/";
+        location.href = "/";
     } else if(buttonId === "featured") {
-        location.href = "https://tmu42.github.io/#Featured Projects"
+        location.href = "/#Featured Projects"
     } else if(buttonId === "active") {
-        location.href = "https://tmu42.github.io/#Active Projects"
+        location.href = "/#Active Projects"
     } else if(buttonId === "future") {
-        location.href = "https://tmu42.github.io/#Future Projects"
+        location.href = "/#Future Projects"
     }
 };
 
