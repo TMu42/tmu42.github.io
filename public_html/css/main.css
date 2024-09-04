@@ -90,6 +90,17 @@ div.page-content {
     margin-right: 5%;
 }
 
+@media (orientation:portrait) {
+    div.page-content {
+        margin-left:  10%;
+        margin-right: 10%;
+    }
+    
+    h2 {
+        padding-left: 5%;
+    }
+}
+
 a {
     text-decoration: none;
     
