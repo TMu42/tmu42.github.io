@@ -30,7 +30,7 @@ h1 {
     -webkit-user-select: none;
 }
 
-h1 img {
+img.title-image {
     height: 50px;
     width:  50px;
 }
