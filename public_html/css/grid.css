@@ -50,10 +50,71 @@ div.inner-box:hover {
     width:  100%;
 }
 
+div.display-box {
+    display: none;
+    
+    position: fixed;
+    
+    z-index: 1;
+    
+    font-size: 1.8rem;
+    
+    text-align: center;
+    
+    border: solid 3px light-dark(#484050, #908088);
+    border-radius: 15px;
+    
+    background-color: light-dark(#d0c0c8,   #080010);
+    background-color: light-dark(#d0c0c8e0, #080010e0);
+}
+
+@media (orientation:portrait) {
+    div.display-box {
+        width:  100vw;
+        height: 100vw;
+        
+        top:  0px;
+        left: 0px;
+    }
+}
+
+@media (orientation:landscape) {
+    div.display-box {
+        width:  100vh;
+        height: 100vh;
+        
+        top:  0px;
+        left: calc(50vw - 50vh);
+    }
+}
+
+div.display-inner {
+    margin: 5% auto;
+    
+    padding: 5px;
+    
+    width:  auto;
+    height: auto;
+    
+    max-width:  80%;
+    max-height: 80%;
+    
+    border: solid 2px red;
+}
+
 img.grid-image {
     user-drag: none;
     -webkit-user-drag: none;
     
-    width:   90%;
-    height: auto;
+    max-width:  90%;
+    max-height: 90%;
+}
+
+img.display-image {
+    display: block;
+    
+    max-width:  90%;
+    max-height: 90%;
+    
+    margin: auto;
 }
