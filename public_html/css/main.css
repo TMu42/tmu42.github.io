@@ -2,6 +2,12 @@
     color-scheme: light dark;
 }
 
+@media (orientation:portrait) {
+    :root {
+        font-size: 1.5em;
+    }
+}
+
 body {
     background-color: light-dark(#c0b0b8, #181020);
     
@@ -31,7 +37,7 @@ h1 {
     
     text-align: center;
     
-    font-size: 4em;
+    font-size: 4rem;
     
     font-family: cursive;
     
@@ -53,11 +59,18 @@ h2 {
     
     text-align: left;
     
-    font-size: 1.8em;
+    font-size: 1.8rem;
     
     font-family: sans-serif;
     
     border-bottom: 2px solid light-dark(#484050, #908088);
+}
+
+@media (orientation:portrait) {
+    img.title-image {
+        height: 70px;
+        width:  70px;
+    }
 }
 
 p.page-content {
