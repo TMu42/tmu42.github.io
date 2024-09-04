@@ -8,16 +8,16 @@
     
     <title>TMu42 - logos</title>
 
-    <link rel="stylesheet" href="/css/main.css?r=98" />
-    <link rel="stylesheet" href="/css/menu.css?r=98" />
-    <link rel="stylesheet" href="/css/grid.css?r=98" />
+    <link rel="stylesheet" href="/css/main.css?r=97" />
+    <link rel="stylesheet" href="/css/menu.css?r=97" />
+    <link rel="stylesheet" href="/css/grid.css?r=97" />
     
     <link rel="icon" href="/favicon.png" type="image/png" id="favicon-link" />
     
-    <script src="/script/main.js?r=98"  type="text/javascript"></script>
-    <script src="/script/theme.js?r=98" type="text/javascript" defer="defer">
+    <script src="/script/main.js?r=97"  type="text/javascript"></script>
+    <script src="/script/theme.js?r=97" type="text/javascript" defer="defer">
     </script>
-    <script src="/script/menu.js?r=98"  type="text/javascript" defer="defer">
+    <script src="/script/menu.js?r=97"  type="text/javascript" defer="defer">
     </script>
   </head>
   
@@ -34,81 +34,85 @@
     <!--/Site Title-->
     
     <!--Menu Bar-->
-    <table id="menu-bar">
-      <tr>
-        <td class="menu-bar menu-square" id="usr" title="TMu42@GitHub">
-          &#x269b;&#xFE0E; <!--atom '⚛' + text version modifier-->
-        </td>
-        
-        <td class="menu-bar menu-square" id="home" title="Home">
-          &#x2302;&#xFE0E; <!--house '⌂' + text version modifier-->
-        </td>
-        
-        <td class="menu-bar" id="featured" title="Featured Projects">
-          Featured
-        </td>
-        
-        <td class="menu-bar" id="active" title="Active Projects">Active</td>
-        
-        <td class="menu-bar" id="future" title="Future Projects">Future</td>
+    <div id="menu-bar">
+      <table id="menu-bar-table">
+        <tr>
+          <td class="menu-bar menu-square" id="usr" title="TMu42@GitHub">
+            &#x269b;&#xFE0E; <!--atom '⚛' + text version modifier-->
+          </td>
+          
+          <td class="menu-bar menu-square" id="home" title="Home">
+            &#x2302;&#xFE0E; <!--house '⌂' + text version modifier-->
+          </td>
+          
+          <td class="menu-bar" id="featured" title="Featured Projects">
+            Featured
+          </td>
+          
+          <td class="menu-bar" id="active" title="Active Projects">Active</td>
+          
+          <td class="menu-bar" id="future" title="Future Projects">Future</td>
+          
+          <!--
+          <td class="menu-bar menu-noop" title="Nothing to see here... yet">
+            Menu Bar Coming Soon...
+          </td>
+          -->
+          
+          <td class="menu-bar menu-square" id="hamburger" title="Menu">
+            &#x2630;&#xFE0E; <!--hamburger '☰' + text version modifier-->
+          </td>
+        </tr>
+      </table>
+      
+      <!--Drop Down Menu-->
+      <div id="hamburger-drop-menu">
+        <div class="drop-down-outer" id="theme-select">
+          <table class=drop-down-table>
+            <tr>
+              <td>Theme</td>
+              
+              <td>  
+                <span class="big-brace">{</span>
+              </td>
+              
+              <td>
+                <div class="drop-down-inner"
+                     id="light-button" title="Light Theme">
+                  Light
+                </div>
+                
+                <div class="drop-down-inner"
+                     id="dark-button" title="Dark Theme">
+                  Dark
+                </div>
+                
+                <div class="drop-down-inner"
+                     id="auto-button" title="Infer Theme from Environment">
+                  Auto
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
         
         <!--
-        <td class="menu-bar menu-noop" title="Nothing to see here... yet">
-          Menu Bar Coming Soon...
-        </td>
-        -->
+        <div class="drop-down menu-noop" title="Nothing to see here... yet">
+          Drop Down
+        </div>
         
-        <td class="menu-bar menu-square" id="hamburger" title="Menu">
-          &#x2630;&#xFE0E; <!--hamburger '☰' + text version modifier-->
-        </td>
-      </tr>
-    </table>
-    <!--/Menu Bar-->
-    
-    <!--Drop Down Menu-->
-    <div id="hamburger-drop-menu">
-      <div class="drop-down-outer" id="theme-select">
-        <table class=drop-down-table>
-          <tr>
-            <td>Theme</td>
-            
-            <td>  
-              <span class="big-brace">{</span>
-            </td>
-            
-            <td>
-              <div class="drop-down-inner"
-                   id="light-button" title="Light Theme">
-                Light
-              </div>
-              
-              <div class="drop-down-inner"
-                   id="dark-button" title="Dark Theme">
-                Dark
-              </div>
-              
-              <div class="drop-down-inner"
-                   id="auto-button" title="Infer Theme from Environment">
-                Auto
-              </div>
-            </td>
-          </tr>
-        </table>
+        <div class="drop-down menu-noop" title="Nothing to see here... yet">
+          Menu Options
+        </div>
+        
+        <div class="drop-down menu-noop" title="Nothing to see here... yet">
+          Coming Soon...
+        </div>
+        -->
       </div>
-      
-      <div class="drop-down menu-noop" title="Nothing to see here... yet">
-        Drop Down
-      </div>
-      
-      <div class="drop-down menu-noop" title="Nothing to see here... yet">
-        Menu Options
-      </div>
-      
-      <div class="drop-down menu-noop" title="Nothing to see here... yet">
-        Coming Soon...
-      </div>
+      <!--/Drop Down Menu-->  
     </div>
-    <!--/Drop Down Menu-->
+    <!--/Menu Bar-->
     <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
     
     <!--Variable Page Body Region--><!--Variable Page Body Region-->

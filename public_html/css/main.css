@@ -19,6 +19,13 @@ body {
     }
 }
 
+@media (orientation:portrait) {
+    body {    
+        margin-left:  0%;
+        margin-right: 0%;
+    }
+}
+
 h1 {
     color: light-dark(#484050, #908088);
     

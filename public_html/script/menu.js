@@ -60,7 +60,7 @@ function toggleHamburger(event) {
 function hideHamburger(event) {
     drop.style.display = "none";
     
-    hmbg.innerHTML = '☰';
+    hmbg.innerHTML = '&#x2630;&#xFE0E;'; /*'☰'*/
     
     hamburger = false;
 };
