@@ -43,6 +43,9 @@ h1 {
     
     cursor: default;
     
+    user-drag: none;
+    -webkit-user-drag: none;
+    
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -52,6 +55,9 @@ h1 {
 img.title-image {
     height: 50px;
     width:  50px;
+    
+    user-drag: none;
+    -webkit-user-drag: none;
 }
 
 h2 {
@@ -88,6 +94,17 @@ div.page-content {
     
     margin-left:  5%;
     margin-right: 5%;
+}
+
+@media (orientation:portrait) {
+    div.page-content {
+        margin-left:  10%;
+        margin-right: 10%;
+    }
+    
+    h2 {
+        padding-left: 5%;
+    }
 }
 
 a {
