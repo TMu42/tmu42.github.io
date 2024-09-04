@@ -80,21 +80,21 @@ div.display-box {
 
 @media (orientation:portrait) {
     div.display-box {
-        width:  100vw;
-        height: 100vw;
+        width:  90vw;
+        height: 90vw;
         
-        top:  0px;
-        left: 0px;
+        top:  5vw;
+        left: 5vw;
     }
 }
 
 @media (orientation:landscape) {
     div.display-box {
-        width:  100vh;
-        height: 100vh;
+        width:  90vh;
+        height: 90vh;
         
-        top:  0px;
-        left: calc(50vw - 50vh);
+        top:  5vh;
+        left: calc(50vw - 45vh);
     }
 }
 
