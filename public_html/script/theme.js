@@ -47,13 +47,13 @@ function detectTheme() {
 
 function updateTheme() {
     if(mode == "dark" || (mode == "auto" && dark.matches)) {
-        favLnk.href = "./favicon-white.png";
-        titIm0.src = "./favicon-light.png";
-        titIm1.src = "./favicon-light.png";
+        favLnk.href = "/images/emu-logo-white.png";
+        titIm0.src = "/images/emu-logo-light.png";
+        titIm1.src = "/images/emu-logo-light.png";
     } else {
-        favLnk.href = "./favicon-black.png";
-        titIm0.src = "./favicon-dark.png";
-        titIm1.src = "./favicon-dark.png";
+        favLnk.href = "/images/emu-logo-black.png";
+        titIm0.src = "/images/emu-logo-dark.png";
+        titIm1.src = "/images/emu-logo-dark.png";
     }
 };
 
