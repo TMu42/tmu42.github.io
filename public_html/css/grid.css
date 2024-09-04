@@ -11,6 +11,9 @@ div.page-grid {
     
     cursor: default;
     
+    user-drag: none;
+    -webkit-user-drag: none;
+    
     user-select: none;
     -ms-user-select: none;
     -moz-user-select: none;
@@ -47,7 +50,10 @@ div.inner-box:hover {
     width:  100%;
 }
 
-div.inner-box img {
+img.grid-image {
+    user-drag: none;
+    -webkit-user-drag: none;
+    
     width:   90%;
     height: auto;
 }
