@@ -145,6 +145,13 @@ img.display-image {
     cursor: pointer;
 }
 
+@media (orientation:portrait) {
+    #display-close {
+        width:  75px;
+        height: 60px;
+    }
+}
+
 #display-close:hover {
     background-color: light-dark(#686070, #706068);
 }
