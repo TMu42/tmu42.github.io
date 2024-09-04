@@ -8,7 +8,7 @@ const menu = document.getElementById("menu-bar");
 const drop = document.getElementById("hamburger-drop-menu");
 const body = document.getElementById("body");
 
-const setActions = () => {
+const setMenuActions = () => {
     user.addEventListener("click", linkButton);
     home.addEventListener("click", linkButton);
     feat.addEventListener("click", linkButton);
@@ -32,11 +32,11 @@ function linkButton(event) {
     } else if(buttonId === "home") {
         location.href = "/";
     } else if(buttonId === "featured") {
-        location.href = "/#Featured Projects"
+        location.href = "/#Featured Projects";
     } else if(buttonId === "active") {
-        location.href = "/#Active Projects"
+        location.href = "/#Active Projects";
     } else if(buttonId === "future") {
-        location.href = "/#Future Projects"
+        location.href = "/#Future Projects";
     }
 };
 
@@ -75,4 +75,4 @@ function showHamburger(event) {
 };
 
 
-setActions();
+setMenuActions();
