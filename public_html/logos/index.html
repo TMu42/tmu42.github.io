@@ -8,18 +8,18 @@
     
     <title>TMu42 - Logos</title>
 
-    <link rel="stylesheet" href="/css/main.css?r=93" />
-    <link rel="stylesheet" href="/css/menu.css?r=93" />
-    <link rel="stylesheet" href="/css/grid.css?r=93" />
+    <link rel="stylesheet" href="/css/main.css?r=91" />
+    <link rel="stylesheet" href="/css/menu.css?r=91" />
+    <link rel="stylesheet" href="/css/grid.css?r=91" />
     
     <link rel="icon" href="/favicon.png" type="image/png" id="favicon-link" />
     
-    <script src="/script/main.js?r=93"  type="text/javascript"></script>
-    <script src="/script/theme.js?r=93" type="text/javascript" defer="defer">
+    <script src="/script/main.js?r=91"  type="text/javascript"></script>
+    <script src="/script/theme.js?r=91" type="text/javascript" defer="defer">
     </script>
-    <script src="/script/menu.js?r=93"  type="text/javascript" defer="defer">
+    <script src="/script/menu.js?r=91"  type="text/javascript" defer="defer">
     </script>
-    <script src="/script/grid.js?r=93"  type="text/javascript" defer="defer">
+    <script src="/script/grid.js?r=91"  type="text/javascript" defer="defer">
     </script>
   </head>
   
@@ -120,13 +120,23 @@
     <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
     
     <!--Variable Page Body Region--><!--Variable Page Body Region-->
-    <div class="display-box" id="display-box">
-      <div id="display-close">X</div>
+    <div id="display-box">
+      <div id="display-close" class="display-button">
+        <span class="button-text">X</span>
+      </div>
       
-      <div class="display-inner">
-        <img class="display-image" draggable="false" id="display-image" />
+      <div id=display-left class="display-button">
+        <span class="button-text">&lt;</span>
+      </div>
+      
+      <div id=display-right class="display-button">
+        <span class="button-text">&gt;</span>
+      </div>
+      
+      <div id="display-inner">
+        <img draggable="false" id="display-image" />
         
-        <span id="display-text"></span>
+        <p id="display-text"></p>
       </div>
     </div>
     

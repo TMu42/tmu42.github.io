@@ -50,7 +50,16 @@ div.inner-box:hover {
     width:  100%;
 }
 
-div.display-box {
+img.grid-image {
+    user-drag: none;
+    -webkit-user-drag: none;
+    
+    max-width:  90%;
+    max-height: 90%;
+}
+
+
+#display-box {
     display: none;
     
     position: fixed;
@@ -79,7 +88,7 @@ div.display-box {
 }
 
 @media (orientation:portrait) {
-    div.display-box {
+    #display-box {
         width:  90vw;
         height: 90vw;
         
@@ -89,7 +98,7 @@ div.display-box {
 }
 
 @media (orientation:landscape) {
-    div.display-box {
+    #display-box {
         width:  90vh;
         height: 90vh;
         
@@ -98,7 +107,7 @@ div.display-box {
     }
 }
 
-div.display-inner {
+#display-inner {
     margin: 5% auto;
     
     padding: 5px;
@@ -110,15 +119,7 @@ div.display-inner {
     max-height: 80%;
 }
 
-img.grid-image {
-    user-drag: none;
-    -webkit-user-drag: none;
-    
-    max-width:  90%;
-    max-height: 90%;
-}
-
-img.display-image {
+#display-image {
     display: block;
     
     max-width:  90%;
@@ -128,21 +129,46 @@ img.display-image {
 }
 
 
-#display-close {
+.display-button {
     position: absolute;
-    
-    right: 5px;
-    top:   5px;
-    
-    padding-top: 10px;
-    
-    width:  50px;
-    height: 40px;
     
     border: 2px solid light-dark(#908088, #484050);
     border-radius: 10px;
     
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    
     cursor: pointer;
+}
+
+.display-button:hover {
+    background-color: light-dark(#686070, #706068);
+}
+
+#display-close {
+    right: 5px;
+    top:   5px;
+    
+    width:  50px;
+    height: 50px;
+}
+
+#display-left {
+    left:  5px;
+    top:  80px;
+    
+    width:  40px;
+    height: calc(100% - 100px);
+}
+
+#display-right {
+    right:  5px;
+    top:   80px;
+    
+    width:  40px;
+    height: calc(100% - 100px);
 }
 
 @media (orientation:portrait) {
@@ -150,8 +176,4 @@ img.display-image {
         width:  75px;
         height: 60px;
     }
-}
-
-#display-close:hover {
-    background-color: light-dark(#686070, #706068);
 }
