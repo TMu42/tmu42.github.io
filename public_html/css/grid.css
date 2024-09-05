@@ -131,9 +131,7 @@ img.grid-image {
 
 .display-button {
     position: absolute;
-    /*
-    padding-top: 10px;
-    */
+    
     border: 2px solid light-dark(#908088, #484050);
     border-radius: 10px;
     
