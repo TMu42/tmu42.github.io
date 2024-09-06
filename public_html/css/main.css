@@ -2,12 +2,6 @@
     color-scheme: light dark;
 }
 
-@media (orientation:portrait) {
-    :root {
-        font-size: 1.5em;
-    }
-}
-
 body {
     background-color: light-dark(#c0b0b8, #181020);
     
@@ -15,21 +9,10 @@ body {
     
     font-family: sans-serif;
     
+    margin-left:  15%;
+    margin-right: 15%;
+    
     min-width: 500px;
-}
-
-@media (orientation:landscape) {
-    body {    
-        margin-left:  15%;
-        margin-right: 15%;
-    }
-}
-
-@media (orientation:portrait) {
-    body {    
-        margin-left:  0%;
-        margin-right: 0%;
-    }
 }
 
 h1 {
@@ -72,13 +55,6 @@ h2 {
     border-bottom: 2px solid light-dark(#484050, #908088);
 }
 
-@media (orientation:portrait) {
-    img.title-image {
-        height: 70px;
-        width:  70px;
-    }
-}
-
 p.page-content {
     text-indent: 40px;
 }
@@ -97,13 +73,27 @@ div.page-content {
 }
 
 @media (orientation:portrait) {
-    div.page-content {
-        margin-left:  10%;
-        margin-right: 10%;
+    :root {
+        font-size: 1.5em;
+    }
+    
+    body {    
+        margin-left:  0%;
+        margin-right: 0%;
+    }
+    
+    img.title-image {
+        height: 70px;
+        width:  70px;
     }
     
     h2 {
         padding-left: 5%;
+    }
+    
+    div.page-content {
+        margin-left:  10%;
+        margin-right: 10%;
     }
 }
 

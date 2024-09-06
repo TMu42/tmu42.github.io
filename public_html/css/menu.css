@@ -62,12 +62,6 @@ table.drop-down-table {
     margin-left:  auto;
 }
 
-@media (orientation:portrait) {
-    table.drop-down-table {
-        margin-right: 5%;
-    }
-}
-
 span.big-brace {
     font-size:   3em;
     font-weight: lighter;
@@ -103,12 +97,6 @@ td.menu-noop, div.menu-noop {
     -ms-user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-}
-
-@media (orientation:portrait) {
-    #menu-bar {
-        height: 75px;
-    }
 }
 
 #menu-bar-table {
@@ -148,6 +136,14 @@ td.menu-noop, div.menu-noop {
 }
 
 @media (orientation:portrait) {
+    table.drop-down-table {
+        margin-right: 5%;
+    }
+    
+    #menu-bar {
+        height: 75px;
+    }
+    
     #hamburger-drop-menu {
         left: 0%;
     }
