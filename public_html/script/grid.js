@@ -1,5 +1,6 @@
 const displayBox = document.getElementById("display-box");
 const displayImg = document.getElementById("display-image");
+const displayTtl = document.getElementById("display-title");
 const displayTxt = document.getElementById("display-text");
 
 const displayClose = document.getElementById("display-close");
@@ -38,20 +39,30 @@ function gridClick(event) {
 function setDisplay(set, idx) {
     if(idx != -1) {
         var img = set[idx].getElementsByTagName("img")[0];
-        var txt = set[idx].getElementsByClassName("grid-text")[0];
+        var ttl = set[idx].getElementsByClassName("grid-text")[0];
+        var txt = set[idx].getElementsByClassName("grid-display-text")[0];
         
         if(typeof img !== "undefined" && img !== null) {
             displayImg.src = img.src;
             displayImg.alt = img.src.split('/')[img.src.split('/').length - 1];
         } else {
-            return false;
+            displayImg.src = "";
+            displayImg.alt = "T&mu;"
+        }
+        
+        if(typeof ttl !== "undefined" && ttl !== null) {
+            displayTtl.innerText = ttl.innerText;
+        } else {
+            displayTtl.innerText = "";
         }
         
         if(typeof txt !== "undefined" && txt !== null) {
-            displayTxt.innerText = txt.innerText;
+            displayTxt.innerHTML = txt.innerHTML;
         } else {
-            return false;
+            displayTxt.innerHTML = "";
         }
+        
+        console.log(displayTtl.innerText);
         
         return true;
     }
