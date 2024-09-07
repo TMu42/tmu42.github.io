@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<!--/logos-->
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <title>TMu42 - Logos</title>
+
+    :head();
+  
+  <body id="body">
+    <!--Constant Page Header Region--><!--Constant Page Header Region-->
+    <!--Site Title-->
+    :title();
+    <!--/Site Title-->
+    
+    <!--Menu Bar-->
+    :menu();
+    <!--/Menu Bar-->
+    <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
+    
+    <!--Variable Page Body Region--><!--Variable Page Body Region-->
+    :display();
+    
+    <h2 id="Emu Logo">Emu Logo</h2>
+    
+    <div class="page-content page-grid">
+      <div class="grid-box">
+        <div class="inner-box">
+          <img class="grid-image" alt="emu-logo-black.png"
+               src=/images/emu-logo-black.png draggable="false" />
+          
+          <span class="grid-text">Emu Logo (Black)</span>
+          
+          <span class="grid-display-text">
+            The Emu Logo in black (#000000).
+          </span>
+        </div>
+      </div>
+      
+      <div class="grid-box">
+        <div class="inner-box">
+          <img class="grid-image" alt="emu-logo-dark.png"
+               src=/images/emu-logo-dark.png draggable="false" />
+          
+          <span class="grid-text">Emu Logo (Dark)</span>
+          
+          <span class="grid-display-text">
+            The Emu Logo in dark mauve-grey (#484050).
+          </span>
+        </div>
+      </div>
+      
+      <div class="grid-box">
+        <div class="inner-box">
+          <img class="grid-image" alt="emu-logo-light.png"
+               src=/images/emu-logo-light.png draggable="false" />
+          
+          <span class="grid-text">Emu Logo (Light)</span>
+          
+          <span class="grid-display-text">
+            The Emu Logo in light mauve-grey (#908088).
+          </span>
+        </div>
+      </div>
+      
+      <div class="grid-box">
+        <div class="inner-box">
+          <img class="grid-image" alt="emu-logo-white.png"
+               src=/images/emu-logo-white.png draggable="false" />
+          
+          <span class="grid-text">Emu Logo (White)</span>
+          
+          <span class="grid-display-text">
+            The Emu Logo in white (#FFFFFF).
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="page-content">
+      <p class="page-content">
+        This website uses the emu as one of its symbols due to its hardy and
+        adaptive nature. The emu is an ancient, flightless bird, native to the
+        Australian continent; it survives and thrives across arid regions to
+        dense forests and everything in between. The emu has also adapted to
+        human habitation in all but the most urbanized areas. Emus are tall,
+        strong, majestic survivours and are capable of tremendous speed and
+        agility. I aim to develop projects which embody these characteristics.
+        If my code is robust, agile, adaptable and speedy, I have done a good
+        day's work.
+      </p>
+      
+      <p class="page-content">
+        I have great respect for the emu and those who hold it in high esteem.
+        I use this symbol out of love and respect. I understand that it holds
+        a diverse significance for many people and I hope that I honour the
+        emu in the eyes of those people. For more details, please see my
+        acknowledgement of the significance of the emu below. It is truely a
+        flightless, avian marvel.
+      </p>
+    </div>
+    <!--/Variable Page Body Region--><!--/Variable Page Body Region-->
+    
+    <!--Constant Page Footer Region--><!--Constant Page Footer Region-->
+    :footer();
+    <!--/Constant Page Footer Region--><!--/Constant Page Footer Region-->
+  </body>
+</html>
