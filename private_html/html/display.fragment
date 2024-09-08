@@ -1,3 +1,4 @@
+::FRAGMENT;
     <div id="display-box">
       <div id="display-close" class="display-button">
         <span class="button-text">X</span>
