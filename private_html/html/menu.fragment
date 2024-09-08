@@ -10,13 +10,13 @@
             &#x2302;&#xFE0E; <!--house '⌂' + text version modifier-->
           </td>
           
-          <td class="menu-bar" id="featured" title="Featured Projects">
+          <td class="menu-bar" id="featured" title="Featured">
             Featured
           </td>
           
-          <td class="menu-bar" id="active" title="Active Projects">Active</td>
+          <td class="menu-bar" id="active" title="Active">Active</td>
           
-          <td class="menu-bar" id="future" title="Future Projects">Future</td>
+          <td class="menu-bar" id="future" title="Future">Future</td>
           
           <!--
           <td class="menu-bar menu-noop" title="Nothing to see here... yet">
