@@ -1,4 +1,4 @@
-:TEMPLATE;
+::TEMPLATE;
 <!DOCTYPE html>
 
 <!--/logos-->
@@ -9,21 +9,21 @@
     
     <title>TMu42 - Logos</title>
 
-    :head();
+    :head;
   
   <body id="body">
     <!--Constant Page Header Region--><!--Constant Page Header Region-->
     <!--Site Title-->
-    :title();
+    :title;
     <!--/Site Title-->
     
     <!--Menu Bar-->
-    :menu();
+    :menu;
     <!--/Menu Bar-->
     <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
     
     <!--Variable Page Body Region--><!--Variable Page Body Region-->
-    :display();
+    :display;
     
     <h2 id="Emu Logo">Emu Logo</h2>
     
@@ -106,7 +106,7 @@
     <!--/Variable Page Body Region--><!--/Variable Page Body Region-->
     
     <!--Constant Page Footer Region--><!--Constant Page Footer Region-->
-    :footer();
+    :footer;
     <!--/Constant Page Footer Region--><!--/Constant Page Footer Region-->
   </body>
 </html>
