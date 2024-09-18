@@ -97,8 +97,8 @@ The following command types are available:
                 former isn't found. This command will fail if neither file is
                 found and may fail if the file is not declared as a
                 `::FRAGMENT;`. Fragment files do not provide any recursive 
-                command parsing. Fragment files should tend towards lower case
-                styles but may contain any valid file path characters.
+                command parsing. Fragment file names should tend towards lower
+                case styles but may contain any valid file path characters.
 
 3. `:[path/to/]parametric();`
             -   This line shall be substituted by the parsed contents of
@@ -108,8 +108,27 @@ The following command types are available:
                 `::PARAMETRIC;`. Parametric files are like fragment files but
                 may contain parameters which can be substituted via assignment
                 between the parentheses where it is invoked in the template
-                file. Parameters may be optional or required and default values
-                may be specified by the parametric file. Where required
-                parameters are not provided at invokation, this will raise a
+                file. Parameters may be optional or required and default
+                values may be specified by the parametric file. Where required
+                parameters are not provided at invocation, this will raise a
                 warning or an error depending on implementation, context and
-                other parameters.
+                other parameters. Parametric assignment is similar to Pythonic
+                keyword argument syntax `(PARAM0=val0, PARAM1=val1 ...)`.
+                Parametric files should tend towards lower case styles but may
+                contain any valid file path characters.
+
+### Parametric File Syntax
+
+Parametric files are exactly like fragment files (which are exactly like
+plaintext files except for the `::FRAGMENT;` declaration) except that they are
+declared with `::PARAMETRIC;` and the may contain substitution parameters. The
+syntax for substitution parameters is `<[PARAMETER]>`. This token may appear
+anywhere in the file and may appear multiple times for each parameter. The
+parameter token must be contained on a single line and it is recomended that
+parameter names should be in allcaps style. The default behaviour (if not
+otherwise declared) is for parameters not mapped at invocation to raise a
+warning and default to an empty substitution. To modify this behaviour, a
+declaration for the parameter is required. Declarations should occur at the
+top of the file, immediately following the file declaration. The syntax for
+this is `::PARAM:PARAM_NAME[:[(True|False)][:DEFAULT_VAL]];`. DEFAULT_VAL will
+be substituted where the parameter is not mapped at invocation
