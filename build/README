@@ -42,15 +42,15 @@ The following syntax is available throughout the template file:
    (if any) is preserved.
    
         `    \:This is a line commencing with four spaces and a colon.`
-        >
+        ->
         `    :This is a line commencing with four spaces and a colon.`
         
         `\\This is a line commencing with a back slash.`
-        >
+        ->
         `\This is a line commencing with a backslash.`
         
         `\\:This is a line commencing with a back slash and a colon.`
-        >
+        ->
         `\:This is a line commencing with a back slash and a colon.`
 
    Note that the `\` character only has a special meaning at the beginning of
@@ -84,9 +84,12 @@ The following command types are available:
 
 1. `::DECLARATION;`     -   As the first line of a file, declares the file
                             type. Recognized values are: `::TEMPLATE;`,
-                            `::FRAGMENT;` and `::PARAMETRIC;`. Declaration
-                            commands commence with two `:` characters (rather
-                            than the usual one) and should be in allcaps style
+                            `::FRAGMENT;` and `::PARAMETRIC;`. Elsewhere in
+                            the file, declares properties of the file.
+                            Recognized values are evolving and depend on
+                            context and file type. Declaration commands
+                            commence with two `:` characters (rather than the
+                            usual one) and should be in allcaps style
                             (containing only capital letters, digits and `_`,
                             not commencing with a digit).
 
@@ -121,14 +124,77 @@ The following command types are available:
 
 Parametric files are exactly like fragment files (which are exactly like
 plaintext files except for the `::FRAGMENT;` declaration) except that they are
-declared with `::PARAMETRIC;` and the may contain substitution parameters. The
-syntax for substitution parameters is `<[PARAMETER]>`. This token may appear
-anywhere in the file and may appear multiple times for each parameter. The
-parameter token must be contained on a single line and it is recomended that
-parameter names should be in allcaps style. The default behaviour (if not
-otherwise declared) is for parameters not mapped at invocation to raise a
-warning and default to an empty substitution. To modify this behaviour, a
-declaration for the parameter is required. Declarations should occur at the
-top of the file, immediately following the file declaration. The syntax for
-this is `::PARAM:PARAM_NAME[:[(True|False)][:DEFAULT_VAL]];`. DEFAULT_VAL will
-be substituted where the parameter is not mapped at invocation
+declared with `::PARAMETRIC;` and the may contain substitution parameters.
+The following syntax is available in parametric files:
+
+1. `<[PARAM_NAME]>`
+        -   May occur anywhere in the file but must be contained on a single
+            line in each instance. It will - by default - be substituted for
+            the value bound to `PARAM_NAME` at invocation from a template
+            file. Each `PARAM_NAME` may appear any number of times in the
+            file. The default behaviour (if not otherwise declared) is for
+            parameters not mapped at invocation to raise a warning and default
+            to an empty substitution. To modify this behaviour, a declaration
+            for the parameter is required. It is recomended that parameter
+            names should be in allcaps style.
+
+2. `::PARAM:PARAM_NAME[:[REQUIRED][:DEFAULT_VAL]];`
+        -   This is the standard syntax for a parameter declaration. All
+            parameter declarations should occur at the top of the file,
+            immediately following the file declaration. The parameter
+            declaration syntax contains a number of standard components:
+                1. `::PARAM` is literal, specifies that this is a parameter
+                   declaration.
+                2. `:PARAM_NAME` specifies the name of the parameter being
+                   declares. `PARAM_NAME` should exactly match the
+                   `PARAM_NAME` from the `<[PARAM_NAME]>` tokens.
+                3. `:REQUIRED` is a boolean (True|False) specifying if the
+                   parameter must be bound at invocation. This component is
+                   not required, its value may be implied (or even overwriten)
+                   by the next component.
+                4. `:DEFAULT_VAL` specifies the default value to bind to
+                   `PARAM_NAME` if not provided by the invocation in the
+                   template file. Note that if this component is present then
+                   at least the leading `:` from the previous component must
+                   be present.
+                5. `;` the declaration must be closed with a semicolon.
+            If neither `REQUIRED` nor `DEFAULT_VAL` are set, the declaration
+            does not change the default behaviour however the warning will be
+            raised whether or not the parameter occurs in the body of the
+            parametric file. If only `REQUIRED` is set, the template
+            invocation will fail if the parameter is not bound. If only
+            `DEFAULT_VAL` is set, `REQUIRED` is set to `False`. If both
+            `REQUIRED` and `DEFAULT_VAL` are set and `REQUIRED` is `True`, it
+            will raise only a warning (not the usual error) if the invocation
+            fails to bind `PARAM_NAME` and the invocation will succeed
+            (notwithstanding other errors). Example behaviour when unbound at
+            invocation:
+                `::PARAM:A;`            -> Bind `""` to `<[A]>` with unbound
+                                           warning.
+                `::PARAM:B:True;`       -> Fail with unbound error.
+                `::PARAM:C:False;`      -> Silently bind `""` to `<[C]>`.
+                `::PARAM:D::foo;`       -> Silently bind `"foo"` to `<[D]>`.
+                `::PARAM:E:True:bar`    -> Bind `"bar"` to `<[E]>` with
+                                           unbound warning.
+                `::PARAM:F:False:baz`   -> Silently bind `"baz"` to `<[F]>`.
+
+3. `\`  -   As with the template format, a line commencing with a backslash is
+            treated as literal with the leading slash stripped. In this way, a
+            literal line commencing with `:` or `\` can be achieved by
+            pre-appending a backslash. This also escapes parameter
+            substitution for the entire line. In parametric files, the
+            backslash can also be used to escape a single parameter token (or
+            rather it can be used to escape the opening of a parameter token,
+            e.g. `\<[A]>` will output the literal `<[A]>` without attempting
+            to perform substitution. Each additional `\` should add a literal
+            `\` to the output. Examples:
+                `::PARAM:X;`        ->  No output but parameter `X` declared.
+                `\::PARAM:X;`       ->  `::PARAM:X;`.
+                `\\::PARAM:X;`      ->  `\::PARAM:X;`.
+                `\text`             ->  `text`.
+                `\\text`            ->  `\text`.
+                `text <[A]> text`   ->  `text VALUE_BOUND_TO_A text`.
+                `\text <[A]> text`  ->  `text <[A]> text`.
+                `\\text <[A]> text` ->  `\text <[A]> text`.
+                `text \<[A]> <[B]>` ->  `text <[A]> VALUE_BOUND_TO_B`.
+                `text \<[<[A]>]>`   ->  `text <[VALUE_BOUND_TO_A]>`.

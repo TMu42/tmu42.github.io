@@ -4,6 +4,9 @@
 import sys
 import re
 
+import parsers
+import errors
+
 
 ID_TEMPLATE   = "::TEMPLATE;"
 ID_FRAGMENT   = "::FRAGMENT;"

@@ -14,7 +14,7 @@
   <body id="body">
     <!--Constant Page Header Region--><!--Constant Page Header Region-->
     <!--Site Title-->
-    :title; hello comment!
+    :title;
     <!--/Site Title-->
     
     <!--Menu Bar-->
