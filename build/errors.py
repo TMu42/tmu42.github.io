@@ -23,3 +23,12 @@ def unbound_parameter_error(name="<unnamed>", mode=ERROR):
         warnings.warn(f"Unbound parameter {name}", UnboundParameterWarning, 2)
     else:
         raise UnboundParameterError(f"Unbound parameter {name}")
+
+def file_type_error(name="<unnamed>", mode=ERROR):
+    if mode not in MODES:
+        raise ValueError("mode must be WARNING or ERROR")
+    
+    if mode == WARNING:
+        warnings.warn(f"Unbound parameter {name}", UnboundParameterWarning, 2)
+    else:
+        raise UnboundParameterError(f"Unbound parameter {name}")

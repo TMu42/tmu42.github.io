@@ -17,6 +17,7 @@ COMMAND = re.compile(r"^\s*:(.*);(.*)$")   # :command; comment
 COM_FRAGMENT   = re.compile(r"^[\w\.\-\/]+$")
 COM_PARAMETRIC = re.compile(r"^([\w\.\-\/]+)\((.*)\)$")
 
+
 def main(args):
     if len(args) < 2 or len(args) > 3:
         misuse(args[0])
