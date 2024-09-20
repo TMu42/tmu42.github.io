@@ -1,3 +1,4 @@
+import warnings
 import sys
 import io
 
@@ -9,20 +10,7 @@ ID_FRAGMENT   = "::FRAGMENT;"
 ID_PARAMETRIC = "::PARAMETRIC;"
 
 
-def parse_file(f=None):
-    match file_type(f):
-        case x if x == ID_TEMPLATE:
-            return template_parser(f)
-        case x if x == ID_FRAGMENT:
-            return fragment_parser(f)
-        case x if x == ID_PARAMETRIC:
-            return parametric_parser(f)
-        case _:
-            
-            return fragment_parser(f)
-
-
-def file_type(f=None):
+def parse_file(f=None, ftype=None):
     f, my_file = acquire_file(f)
     
     try:
@@ -32,12 +20,36 @@ def file_type(f=None):
     else:
         f.seek(0)
     
-    id_line = f.readline().strip()
+    read_ftype = file_type(f)
+    
+    if ftype is not None and ftype != ID_FRAGMENT and ftype != read_ftype:
+        raise errors.FileTypeError(
+            f"file \"{f.name}\" does not match requested file type "
+            f"\"{ftype}\".")
+    
+    if read_ftype == ID_TEMPLATE:
+        parser = template_parser(f)
+    elif read_ftype == ID_FRAGMENT:
+        parser = fragment_parser(f)
+    elif read_ftype == ID_PARAMETRIC:
+        parser = parametric_parser(f)
+    else:
+        warnings.warn(
+            f"file \"{f.name}\" does not match any recognized file type.",
+            errors.FileTypeWarning, 2)
+        
+        parser = fragment_parser(f)
     
     if my_file:
         f.close()
     elif fp is not None:
         f.seek(fp)
+    
+    return parser
+
+
+def file_type(f=None):
+    id_line = f.readline().strip()
     
     print(f"File type: {id_line}")
     
@@ -45,21 +57,15 @@ def file_type(f=None):
 
 
 def template_parser(tfile=None):
-    tfile, my_file = acquire_file(tfile, context="template_parser()")
-    
-    try:
-        fp = tfile.tell()
-    except io.UnsupportedOperation:
-        fp = None
-    else:
-        tfile.seek(0)
-    
     print(f"Ready to parse template file: {tfile.name}")
-    
-    if my_file:
-        tfile.close()
-    elif fp is not None:
-        tfile.seek(fp)
+
+
+def fragment_parser(ffile=None):
+    print(f"Ready to parse fragment file: {ffile.name}")
+
+
+def parametric_parser(pfile=None):
+    print(f"Ready to parse parametric file: {pfile.name}")
 
 
 def acquire_file(f, context="acquire_file()"):
@@ -70,8 +76,8 @@ def acquire_file(f, context="acquire_file()"):
     if isinstance(f, io.TextIOWrapper):
         if not f.readable():
             raise ValueError(
-                f"File object ({f.name}) is not readable (mode is "
-                f"{f.mode!r}). Try opening with mode='r'.")
+                f"File object ({f.name}) is not readable (mode is {f.mode!r}. "
+                f"Try opening with mode='r'.")
         
         return f, False
     
