@@ -2,10 +2,7 @@ import warnings
 import sys
 
 
-WARNING = 0
-ERROR   = 1
-
-MODES = {WARNING, ERROR}
+MODES = {"WARNING", "ERROR"}
 
 
 class UnboundParameterError(Exception):
@@ -21,23 +18,26 @@ class FileTypeWarning(Warning):
     pass
 
 
-def unbound_parameter_error(name="<unnamed>", mode=ERROR):
+def unbound_parameter_error(message=None, mode="ERROR"):
     if mode not in MODES:
-        raise ValueError("mode must be WARNING or ERROR")
+        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
     
-    if mode == WARNING:
-        warnings.warn(f"Unbound parameter {name}", UnboundParameterWarning, 3)
+    if message is None:
+        message = f"Unbound parameter {mode.lower()}."
+    
+    if mode == "WARNING":
+        warnings.warn(message, UnboundParameterWarning, 3)
     else:
-        raise UnboundParameterError(f"Unbound parameter {name}")
+        raise UnboundParameterError(message)
 
-def file_type_error(fname="<unnamed>", ftype="<notype>", mode=ERROR):
+def file_type_error(message=None, mode="ERROR"):
     if mode not in MODES:
-        raise ValueError("mode must be WARNING or ERROR")
+        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
     
-    if mode == WARNING:
-        warnings.warn(
-            f"File type \"{ftype}\" not recognized for file \"{fname}\".",
-            FileTypeWarning, 3)
+    if message is None:
+        message = f"File type {mode.lower()}."
+    
+    if mode == "WARNING":
+        warnings.warn(message, FileTypeWarning, 3)
     else:
-        raise FileTypeError(
-            f"File type \"{ftype}\" not recognized for file \"{fname}\".")
+        raise FileTypeError(message)

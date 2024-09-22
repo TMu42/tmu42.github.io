@@ -1,4 +1,4 @@
-import warnings
+import tempfile
 import sys
 import io
 
@@ -20,51 +20,68 @@ def parse_file(f=None, ftype=None):
     else:
         f.seek(0)
     
-    read_ftype = file_type(f)
+    read_ftype, first_line = file_type(f)
     
     if ftype is not None and ftype != ID_FRAGMENT and ftype != read_ftype:
-        raise errors.FileTypeError(
+        errors.file_type_error(
             f"file \"{f.name}\" does not match requested file type "
             f"\"{ftype}\".")
     
     if read_ftype == ID_TEMPLATE:
-        parser = template_parser(f)
+        parsed = template_parser(f)
     elif read_ftype == ID_FRAGMENT:
-        parser = fragment_parser(f)
+        parsed = fragment_parser(f)
     elif read_ftype == ID_PARAMETRIC:
-        parser = parametric_parser(f)
+        parsed = parametric_parser(f)
     else:
-        warnings.warn(
+        errors.file_type_error(
             f"file \"{f.name}\" does not match any recognized file type.",
-            errors.FileTypeWarning, 2)
+            mode="WARNING")
         
-        parser = fragment_parser(f)
+        parsed = fragment_parser(f, prefix=first_line)
     
     if my_file:
         f.close()
     elif fp is not None:
         f.seek(fp)
     
-    return parser
+    return parsed
 
 
 def file_type(f=None):
-    id_line = f.readline().strip()
+    id_line = f.readline()
     
-    print(f"File type: {id_line}")
+    try:
+        id_tag = id_line[:id_line.index(';') + 1].strip()
+    except ValueError:
+        id_tag = id_line
     
-    return id_line
+    #print(f"File type: {id_line}")
+    
+    return id_tag, id_line
 
 
-def template_parser(tfile=None):
+def template_parser(tfile=None, prefix=None):
     print(f"Ready to parse template file: {tfile.name}")
 
 
-def fragment_parser(ffile=None):
-    print(f"Ready to parse fragment file: {ffile.name}")
+def fragment_parser(ffile=None, prefix=None):
+    #print(f"Ready to parse fragment file: {ffile.name}")
+    
+    parsed_file = tempfile.TemporaryFile(mode='w+')
+    
+    if prefix is not None:
+        parsed_file.write(prefix)
+    
+    if ffile is not None:
+        parsed_file.write(ffile.read())
+    
+    parsed_file.seek(0)
+    
+    return [parsed_file]
 
 
-def parametric_parser(pfile=None):
+def parametric_parser(pfile=None, prefix=None):
     print(f"Ready to parse parametric file: {pfile.name}")
 
 
