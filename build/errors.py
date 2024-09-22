@@ -17,6 +17,12 @@ class FileTypeError(Exception):
 class FileTypeWarning(Warning):
     pass
 
+class UnrecognizedCommandError(Exception):
+    pass
+
+class UnrecognizedCommandWarning(Warning):
+    pass
+
 
 def unbound_parameter_error(message=None, mode="ERROR"):
     if mode not in MODES:
@@ -36,6 +42,18 @@ def file_type_error(message=None, mode="ERROR"):
     
     if message is None:
         message = f"File type {mode.lower()}."
+    
+    if mode == "WARNING":
+        warnings.warn(message, FileTypeWarning, 3)
+    else:
+        raise FileTypeError(message)
+
+def unrecognized_command_error(message=None, mode="ERROR"):
+    if mode not in MODES:
+        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
+    
+    if message is None:
+        message = f"Unrecognized command {mode.lower()}."
     
     if mode == "WARNING":
         warnings.warn(message, FileTypeWarning, 3)

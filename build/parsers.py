@@ -12,8 +12,14 @@ ID_TEMPLATE   = "::TEMPLATE;"
 ID_FRAGMENT   = "::FRAGMENT;"
 ID_PARAMETRIC = "::PARAMETRIC;"
 
+COMMAND = re.compile(r"^\s*:(.*);(.*)$")   # :command; comment
 
-def parse_file(f=None, ftype=None):
+COM_FRAGMENT   = re.compile(r"^[\w\.\-\/]+$")   #A-Z,a-z,0-9,'.','-','/'
+COM_PARAMETRIC = re.compile(r"^([\w\.\-\/]+)\((.*)\)$")
+
+
+###### Main Parser ##########
+def parse_file(f=None, ftype=None, fpath=""):
     f, my_file = acquire_file(f)
     
     try:
@@ -30,21 +36,14 @@ def parse_file(f=None, ftype=None):
             f"file \"{f.name}\" does not match requested file type "
             f"\"{ftype}\".")
     
-    #if read_ftype == ID_TEMPLATE:
-    #    parsed = template_parser(f)
-    #elif read_ftype == ID_FRAGMENT:
-    #    parsed = fragment_parser(f)
-    #elif read_ftype == ID_PARAMETRIC:
-    #    parsed = parametric_parser(f)
-    #else:
     try:
-        parsed = PARSERS[read_ftype](f)
+        parsed = PARSERS[read_ftype](f, fpath=fpath)
     except KeyError:
         errors.file_type_error(
             f"file \"{f.name}\" does not match any recognized file type.",
             mode="WARNING")
         
-        parsed = fragment_parser(f, prefix=first_line)
+        parsed = fragment_parser(f, fpath=fpath, prefix=first_line)
     
     if my_file:
         f.close()
@@ -54,6 +53,7 @@ def parse_file(f=None, ftype=None):
     return parsed
 
 
+######### File Checks and Acquisition ################
 def acquire_file(f, context="acquire_file()"):
     if not (isinstance(f, io.TextIOWrapper) or isinstance(f, str)):
         raise TypeError(
@@ -83,11 +83,52 @@ def file_type(f=None):
     return id_tag, id_line
 
 
-def template_parser(tfile=None, prefix=None):
-    print(f"Ready to parse template file: {tfile.name}")
+####### Specific File Type Parsers ##################
+def template_parser(tfile=None, fpath="", prefix=None):
+    #print(f"Ready to parse template file: {tfile.name}")
+    
+    parsed_files = []
+    
+    if prefix is not None:
+        parsed_files.append(tempfile.TemporaryFile(mode='w+'))
+        
+        parsed_files[-1].write(prefix)
+    
+    if tfile is not None:
+        parsed_files.append(tempfile.TemporaryFile(mode='w+'))
+        
+        newline = True
+        
+        while (line := tfile.readline(CHUNK_SIZE)):
+            if newline and COMMAND.match(line):
+                cmd = COMMAND.sub(r"\1", line)
+                
+                if COM_FRAGMENT.match(cmd):
+                    frag_name = resolve_fragment_file(cmd, path=fpath)
+                    
+                    parsed_files += parse_file(frag_name, ID_FRAGMENT)
+                    
+                    parsed_files.append(tempfile.TemporaryFile(mode='w+'))
+                else:
+                    parsed_files[-1].write(line)
+                    
+                    errors.unrecognized_command_error(
+                        f"Unrecognized command: :{cmd};", "WARNING")
+                
+                if line[-1] == '\n':
+                    newline = True
+                else
+                    newline = None
+            else:
+                parsed_files[-1].write(line)
+                
+                if line[-1] == '\n':
+                    newline = True
+                else:
+                    newline = False
 
 
-def fragment_parser(ffile=None, prefix=None):
+def fragment_parser(ffile=None, fpath="", prefix=None):
     #print(f"Ready to parse fragment file: {ffile.name}")
     
     parsed_file = tempfile.TemporaryFile(mode='w+')
@@ -104,10 +145,23 @@ def fragment_parser(ffile=None, prefix=None):
     return [parsed_file]
 
 
-def parametric_parser(pfile=None, prefix=None):
+def parametric_parser(pfile=None, fpath="", prefix=None):
     print(f"Ready to parse parametric file: {pfile.name}")
 
 
 PARSERS = { ID_TEMPLATE   : template_parser,
             ID_FRAGMENT   : fragment_parser,
             ID_PARAMETRIC : parametric_parser }
+
+
+######## File Name Resolution ##################
+def resolve_fragment_file(name, path=""):
+    priority = [f"{path}{name}",
+                f"{path}{name}.fragment",
+                f"{path}{name}.frag"]
+    
+    for fname in priority:
+        if os.path.isfile(fname):
+            return fname
+    
+    return None

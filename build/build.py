@@ -72,6 +72,8 @@ def main(args):
                         for pfile in parsed:
                             while (line := pfile.readline(parsers.CHUNK_SIZE)):
                                 outfile.write(line)
+                            
+                            pfile.close()
                 else:
                     print(line, end='', file=outfile)
                     print(f"Warning: unrecognized command: {cmd}",
