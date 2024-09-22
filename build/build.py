@@ -70,7 +70,7 @@ def main(args):
                     
                     if parsed is not None:
                         for pfile in parsed:
-                            while (line := pfile.readline()):
+                            while (line := pfile.readline(parsers.CHUNK_SIZE)):
                                 outfile.write(line)
                 else:
                     print(line, end='', file=outfile)

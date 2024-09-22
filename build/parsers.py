@@ -5,6 +5,9 @@ import io
 import errors
 
 
+CHUNK_SIZE = 1024
+
+
 ID_TEMPLATE   = "::TEMPLATE;"
 ID_FRAGMENT   = "::FRAGMENT;"
 ID_PARAMETRIC = "::PARAMETRIC;"
@@ -49,7 +52,7 @@ def parse_file(f=None, ftype=None):
 
 
 def file_type(f=None):
-    id_line = f.readline()
+    id_line = f.readline(CHUNK_SIZE)
     
     try:
         id_tag = id_line[:id_line.index(';') + 1].strip()
@@ -74,7 +77,8 @@ def fragment_parser(ffile=None, prefix=None):
         parsed_file.write(prefix)
     
     if ffile is not None:
-        parsed_file.write(ffile.read())
+        while (chunk := ffile.read(CHUNK_SIZE)):
+            parsed_file.write(chunk)
     
     parsed_file.seek(0)
     
