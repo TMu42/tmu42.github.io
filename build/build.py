@@ -35,33 +35,61 @@ def main(args):
     
     id_line = infile.readline()
     
-    if id_line.strip() == ID_TEMPLATE:
+    try:
+        id_tag = id_line[:id_line.index(';') + 1].strip()
+    except ValueError:
+        id_tag = id_line
+    
+    if id_tag == ID_TEMPLATE:
         for line in infile.readlines():
             if COMMAND.match(line) is not None:
                 cmd = COMMAND.sub(r"\1", line).strip()
                 
                 if COM_FRAGMENT.match(cmd):
-                    fragfile = None
-                    
                     try:
-                        fragfile = open(f"{inpath}{cmd}.fragment")
+                        parsed = parsers.parse_file(f"{inpath}{cmd}")
                     except FileNotFoundError:
                         try:
-                            fragfile = open(f"{inpath}{cmd}")
+                            parsed = parsers.parse_file(
+                                                    f"{inpath}{cmd}.fragment")
                         except FileNotFoundError:
-                            print(line, end='', file=outfile)
-                            print(f"Warning: File not found: {cmd}[.fragment]",
-                                                            file=sys.stderr)
+                            try:
+                                parsed = parsers.parse_file(
+                                                    "{inpath}{cmd}.frag")
+                            except FileNotFoundError:
+                                
+                                print(line, end='', file=outfile)
+                                print(f"Warning: File not found: {inpath}"
+                                      f"{cmd}[.frag[ment]]", file=sys.stderr)
+                                
+                                parsed = None
                     
-                    if fragfile is not None:
-                        id_line = fragfile.readline()
-                        
-                        if id_line.strip() != ID_FRAGMENT:
-                            print(id_line, end='', file=outfile)
-                            print(f"Warning: bad fragment file")
-                        
-                        for line in fragfile.readlines():
-                            print(line, end='', file=outfile)
+                    if parsed is not None:
+                        for pfile in parsed:
+                            while (line := pfile.readline()):
+                                outfile.write(line)
+                    
+                    #fragfile = None
+                    #
+                    #try:
+                    #    fragfile = open(f"{inpath}{cmd}.fragment")
+                    #except FileNotFoundError:
+                    #    try:
+                    #        fragfile = open(f"{inpath}{cmd}")
+                    #    except FileNotFoundError:
+                    #        print(line, end='', file=outfile)
+                    #        print(f"Warning: File not found: {cmd}"
+                    #              f"[.fragment]", file=sys.stderr)
+                    #
+                    #if fragfile is not None:
+                    #    id_line = fragfile.readline()
+                    #    
+                    #    if id_line.strip() != ID_FRAGMENT:
+                    #        print(id_line, end='', file=outfile)
+                    #        print(f"Warning: bad fragment file")
+                    #    
+                    #    for line in fragfile.readlines():
+                    #        print(line, end='', file=outfile)
                 else:
                     print(line, end='', file=outfile)
                     print(f"Warning: unrecognized command: {cmd}",
