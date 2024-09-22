@@ -30,13 +30,16 @@ def parse_file(f=None, ftype=None):
             f"file \"{f.name}\" does not match requested file type "
             f"\"{ftype}\".")
     
-    if read_ftype == ID_TEMPLATE:
-        parsed = template_parser(f)
-    elif read_ftype == ID_FRAGMENT:
-        parsed = fragment_parser(f)
-    elif read_ftype == ID_PARAMETRIC:
-        parsed = parametric_parser(f)
-    else:
+    #if read_ftype == ID_TEMPLATE:
+    #    parsed = template_parser(f)
+    #elif read_ftype == ID_FRAGMENT:
+    #    parsed = fragment_parser(f)
+    #elif read_ftype == ID_PARAMETRIC:
+    #    parsed = parametric_parser(f)
+    #else:
+    try:
+        parsed = PARSERS[read_ftype](f)
+    except KeyError:
         errors.file_type_error(
             f"file \"{f.name}\" does not match any recognized file type.",
             mode="WARNING")
@@ -49,6 +52,22 @@ def parse_file(f=None, ftype=None):
         f.seek(fp)
     
     return parsed
+
+
+def acquire_file(f, context="acquire_file()"):
+    if not (isinstance(f, io.TextIOWrapper) or isinstance(f, str)):
+        raise TypeError(
+            f"{context} needs an open file or a string, got {type(f)}.")
+    
+    if isinstance(f, io.TextIOWrapper):
+        if not f.readable():
+            raise ValueError(
+                f"File object ({f.name}) is not readable (mode is {f.mode!r}. "
+                f"Try opening with mode='r'.")
+        
+        return f, False
+    
+    return open(f), True
 
 
 def file_type(f=None):
@@ -89,17 +108,6 @@ def parametric_parser(pfile=None, prefix=None):
     print(f"Ready to parse parametric file: {pfile.name}")
 
 
-def acquire_file(f, context="acquire_file()"):
-    if not (isinstance(f, io.TextIOWrapper) or isinstance(f, str)):
-        raise TypeError(
-            f"{context} needs an open file or a string, got {type(f)}.")
-    
-    if isinstance(f, io.TextIOWrapper):
-        if not f.readable():
-            raise ValueError(
-                f"File object ({f.name}) is not readable (mode is {f.mode!r}. "
-                f"Try opening with mode='r'.")
-        
-        return f, False
-    
-    return open(f), True
+PARSERS = { ID_TEMPLATE   : template_parser,
+            ID_FRAGMENT   : fragment_parser,
+            ID_PARAMETRIC : parametric_parser }
