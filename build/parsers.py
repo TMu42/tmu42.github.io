@@ -1,6 +1,8 @@
 import tempfile
 import sys
+import os
 import io
+import re
 
 import errors
 
@@ -12,7 +14,7 @@ ID_TEMPLATE   = "::TEMPLATE;"
 ID_FRAGMENT   = "::FRAGMENT;"
 ID_PARAMETRIC = "::PARAMETRIC;"
 
-COMMAND = re.compile(r"^\s*:(.*);(.*)$")   # :command; comment
+COMMAND = re.compile(r"^\s*:([^;]*);(.*)$")   # :command; comment
 
 COM_FRAGMENT   = re.compile(r"^[\w\.\-\/]+$")   #A-Z,a-z,0-9,'.','-','/'
 COM_PARAMETRIC = re.compile(r"^([\w\.\-\/]+)\((.*)\)$")
@@ -93,18 +95,26 @@ def template_parser(tfile=None, fpath="", prefix=None):
         parsed_files.append(tempfile.TemporaryFile(mode='w+'))
         
         parsed_files[-1].write(prefix)
+        parsed_files[-1].seek(0)
     
     if tfile is not None:
         parsed_files.append(tempfile.TemporaryFile(mode='w+'))
         
         newline = True
+        command = False
         
         while (line := tfile.readline(CHUNK_SIZE)):
             if newline and COMMAND.match(line):
-                cmd = COMMAND.sub(r"\1", line)
+                cmd = COMMAND.sub(r"\1", line).strip()
+                
+                #print(f"cmd: [{cmd}]", file=sys.stderr)
+                
+                command = True
                 
                 if COM_FRAGMENT.match(cmd):
                     frag_name = resolve_fragment_file(cmd, path=fpath)
+                    
+                    #parsed_files[-1].seek(0)
                     
                     parsed_files += parse_file(frag_name, ID_FRAGMENT)
                     
@@ -112,21 +122,23 @@ def template_parser(tfile=None, fpath="", prefix=None):
                 else:
                     parsed_files[-1].write(line)
                     
+                    command = False
+                    
                     errors.unrecognized_command_error(
                         f"Unrecognized command: :{cmd};", "WARNING")
-                
-                if line[-1] == '\n':
-                    newline = True
-                else
-                    newline = None
-            else:
+            elif newline or not command:
                 parsed_files[-1].write(line)
                 
-                if line[-1] == '\n':
-                    newline = True
-                else:
-                    newline = False
-
+                command = False
+            
+            if line[-1] == '\n':
+                newline = True
+            else:
+                newline = False
+    
+    #parsed_files[-1].seek(0)
+    
+    return parsed_files
 
 def fragment_parser(ffile=None, fpath="", prefix=None):
     #print(f"Ready to parse fragment file: {ffile.name}")
@@ -140,7 +152,7 @@ def fragment_parser(ffile=None, fpath="", prefix=None):
         while (chunk := ffile.read(CHUNK_SIZE)):
             parsed_file.write(chunk)
     
-    parsed_file.seek(0)
+    #parsed_file.seek(0)
     
     return [parsed_file]
 
@@ -161,7 +173,13 @@ def resolve_fragment_file(name, path=""):
                 f"{path}{name}.frag"]
     
     for fname in priority:
+        #print(f"looking for file: {fname}", file=sys.stderr)
+        
         if os.path.isfile(fname):
+            #print("Found it!", file=sys.stderr)
+            
             return fname
+        
+        #print("Not found...", file=sys.stderr)
     
     return None

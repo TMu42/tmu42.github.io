@@ -33,58 +33,68 @@ def main(args):
     else:
         outfile = sys.stdout
     
-    id_line = infile.readline()
+    #id_line = infile.readline()
+    #
+    #try:
+    #    id_tag = id_line[:id_line.index(';') + 1].strip()
+    #except ValueError:
+    #    id_tag = id_line
+    #
+    #if id_tag == ID_TEMPLATE:
+    #    for line in infile.readlines():
+    #        if COMMAND.match(line) is not None:
+    #            cmd = COMMAND.sub(r"\1", line).strip()
+    #            
+    #            if COM_FRAGMENT.match(cmd):
+    #                try:
+    #                    parsed = parsers.parse_file(
+    #                                        f"{inpath}{cmd}",
+    #                                        parsers.ID_FRAGMENT)
+    #                except FileNotFoundError:
+    #                    try:
+    #                        parsed = parsers.parse_file(
+    #                                        f"{inpath}{cmd}.fragment",
+    #                                        parsers.ID_FRAGMENT)
+    #                    except FileNotFoundError:
+    #                        try:
+    #                            parsed = parsers.parse_file(
+    #                                        f"{inpath}{cmd}.frag",
+    #                                        parsers.ID_FRAGMENT)
+    #                        except FileNotFoundError:
+    #                            
+    #                            print(line, end='', file=outfile)
+    #                            print(f"Warning: File not found: {inpath}"
+    #                                  f"{cmd}[.frag[ment]]", file=sys.stderr)
+    #                            
+    #                            parsed = None
+    #                
+    #                if parsed is not None:
+    #                    for pfile in parsed:
+    #                        while (line := pfile.readline(parsers.CHUNK_SIZE)):
+    #                            outfile.write(line)
+    #                        
+    #                        pfile.close()
+    #            else:
+    #                print(line, end='', file=outfile)
+    #                print(f"Warning: unrecognized command: {cmd}",
+    #                                                        file=sys.stderr)
+    #        else:
+    #            print(line, end='', file=outfile)
+    #else:
+    #    print(id_line, end='', file=outfile)
+    #    
+    #    for line in infile.readlines():
+    #        print(line, end='', file=outfile)
     
-    try:
-        id_tag = id_line[:id_line.index(';') + 1].strip()
-    except ValueError:
-        id_tag = id_line
+    parsed = parsers.parse_file(infile, fpath=inpath)
     
-    if id_tag == ID_TEMPLATE:
-        for line in infile.readlines():
-            if COMMAND.match(line) is not None:
-                cmd = COMMAND.sub(r"\1", line).strip()
-                
-                if COM_FRAGMENT.match(cmd):
-                    try:
-                        parsed = parsers.parse_file(
-                                            f"{inpath}{cmd}",
-                                            parsers.ID_FRAGMENT)
-                    except FileNotFoundError:
-                        try:
-                            parsed = parsers.parse_file(
-                                            f"{inpath}{cmd}.fragment",
-                                            parsers.ID_FRAGMENT)
-                        except FileNotFoundError:
-                            try:
-                                parsed = parsers.parse_file(
-                                            f"{inpath}{cmd}.frag",
-                                            parsers.ID_FRAGMENT)
-                            except FileNotFoundError:
-                                
-                                print(line, end='', file=outfile)
-                                print(f"Warning: File not found: {inpath}"
-                                      f"{cmd}[.frag[ment]]", file=sys.stderr)
-                                
-                                parsed = None
-                    
-                    if parsed is not None:
-                        for pfile in parsed:
-                            while (line := pfile.readline(parsers.CHUNK_SIZE)):
-                                outfile.write(line)
-                            
-                            pfile.close()
-                else:
-                    print(line, end='', file=outfile)
-                    print(f"Warning: unrecognized command: {cmd}",
-                                                            file=sys.stderr)
-            else:
-                print(line, end='', file=outfile)
-    else:
-        print(id_line, end='', file=outfile)
+    for pfile in parsed:
+        pfile.seek(0)
         
-        for line in infile.readlines():
-            print(line, end='', file=outfile)
+        while (chunk := pfile.read(parsers.CHUNK_SIZE)):
+            outfile.write(chunk)
+        
+        pfile.close()
     
     infile.close()
     outfile.close()
