@@ -15,6 +15,7 @@ ID_FRAGMENT   = "::FRAGMENT;"
 ID_PARAMETRIC = "::PARAMETRIC;"
 
 COMMAND = re.compile(r"^\s*:([^;]*);(.*)$")   # :command; comment
+ESCAPE  = re.compile(r"^(\s*)\\(.*)$")        # \literal
 
 COM_FRAGMENT   = re.compile(r"^[\w\.\-\/]+$")   #A-Z,a-z,0-9,'.','-','/'
 COM_PARAMETRIC = re.compile(r"^([\w\.\-\/]+)\((.*)\)$")
@@ -102,35 +103,76 @@ def template_parser(tfile=None, fpath="", prefix=None):
         command = False
         
         while (line := tfile.readline(CHUNK_SIZE)):
-            if newline and COMMAND.match(line):
-                cmd = COMMAND.sub(r"\1", line).strip()
-                
-                command = True
-                
-                if COM_FRAGMENT.match(cmd):
-                    frag_name = resolve_fragment_file(cmd, path=fpath)
-                    
-                    parsed_files += parse_file(frag_name, ID_FRAGMENT)
-                    
-                    parsed_files.append(tempfile.TemporaryFile(mode='w+'))
-                else:
-                    parsed_files[-1].write(line)
-                    
-                    command = False
-                    
-                    errors.unrecognized_command_error(
-                        f"Unrecognized command: :{cmd};", "WARNING")
-            elif newline or not command:
-                parsed_files[-1].write(line)
-                
-                command = False
-            
-            if line[-1] == '\n':
-                newline = True
-            else:
-                newline = False
+            newline, command, parsed_files = parse_template_line(
+                                                line, newline, command, fpath,
+                                                parsed_files)
+            #if newline and COMMAND.match(line):
+            #    cmd = COMMAND.sub(r"\1", line).strip()
+            #    
+            #    command = True
+            #    
+            #    if COM_FRAGMENT.match(cmd):
+            #        frag_name = resolve_fragment_file(cmd, path=fpath)
+            #        
+            #        parsed_files += parse_file(frag_name, ID_FRAGMENT)
+            #        
+            #        parsed_files.append(tempfile.TemporaryFile(mode='w+'))
+            #    else:
+            #        parsed_files[-1].write(line)
+            #        
+            #        command = False
+            #        
+            #        errors.unrecognized_command_error(
+            #            f"Unrecognized command: :{cmd};", "WARNING")
+            #elif newline and ESCAPE.match(line):
+            #    line = ESCAPE.sub(r"\1\2", line)
+            #    
+            #    parsed_files[-1].write(line)
+            #    
+            #    command = False
+            #elif newline or not command:
+            #    parsed_files[-1].write(line)
+            #    
+            #    command = False
+            #
+            #if line[-1] == '\n':
+            #    newline = True
+            #else:
+            #    newline = False
     
     return parsed_files
+
+
+def parse_template_line(line, newline=True, command=False, fpath="",
+                        parsed_files=[tempfile.TemporaryFile(mode='w+')]):
+    comm = False
+    
+    if newline and COMMAND.match(line):
+        cmd = COMMAND.sub(r"\1", line).strip()
+        
+        comm = True
+        
+        if COM_FRAGMENT.match(cmd):
+            frag_name = resolve_fragment_file(cmd, path=fpath)
+            
+            parsed_files += parse_file(frag_name, ID_FRAGMENT)
+            parsed_files.append(tempfile.TemporaryFile(mode='w+'))
+        else:
+            parsed_files[-1].write(line)
+            
+            comm = False
+            
+            errors.unrecognized_command_error(
+                f"Unrecognized command: :{cmd};", "WARNING")
+    elif newline and ESCAPE.match(line):
+        line = ESCAPE.sub(r"\1\2", line)
+        
+        parsed_files[-1].write(line)
+    elif newline or not command:
+        parsed_files[-1].write(line)
+    
+    return (line[-1] == '\n'), comm, parsed_files
+
 
 def fragment_parser(ffile=None, fpath="", prefix=None):
     #print(f"Ready to parse fragment file: {ffile.name}")
