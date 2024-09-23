@@ -5,36 +5,18 @@ import sys
 MODES = {"WARNING", "ERROR"}
 
 
-class UnboundParameterError(Exception):
-    pass
+class FileTypeError(Exception): pass
+class FileTypeWarning(Warning): pass
 
-class UnboundParameterWarning(Warning):
-    pass
+class UnboundParameterError(Exception): pass
+class UnboundParameterWarning(Warning): pass
 
-class FileTypeError(Exception):
-    pass
+class UnrecognizedCommandError(Exception): pass
+class UnrecognizedCommandWarning(Warning): pass
 
-class FileTypeWarning(Warning):
-    pass
+class UsageError(Exception): pass
+class UsageWarning(Warning): pass
 
-class UnrecognizedCommandError(Exception):
-    pass
-
-class UnrecognizedCommandWarning(Warning):
-    pass
-
-
-def unbound_parameter_error(message=None, mode="ERROR"):
-    if mode not in MODES:
-        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
-    
-    if message is None:
-        message = f"Unbound parameter {mode.lower()}."
-    
-    if mode == "WARNING":
-        warnings.warn(message, UnboundParameterWarning, 3)
-    else:
-        raise UnboundParameterError(message)
 
 def file_type_error(message=None, mode="ERROR"):
     if mode not in MODES:
@@ -48,6 +30,18 @@ def file_type_error(message=None, mode="ERROR"):
     else:
         raise FileTypeError(message)
 
+def unbound_parameter_error(message=None, mode="ERROR"):
+    if mode not in MODES:
+        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
+    
+    if message is None:
+        message = f"Unbound parameter {mode.lower()}."
+    
+    if mode == "WARNING":
+        warnings.warn(message, UnboundParameterWarning, 3)
+    else:
+        raise UnboundParameterError(message)
+
 def unrecognized_command_error(message=None, mode="ERROR"):
     if mode not in MODES:
         raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
@@ -59,3 +53,15 @@ def unrecognized_command_error(message=None, mode="ERROR"):
         warnings.warn(message, FileTypeWarning, 3)
     else:
         raise FileTypeError(message)
+
+def usage_error(message=None, mode="ERROR"):
+    if mode not in MODES:
+        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
+    
+    if message is None:
+        message = f"Usage {mode.lower()}."
+    
+    if mode == "WARNING":
+        warnings.warn(message, UsageWarning, 3)
+    else:
+        raise UsageError(message)

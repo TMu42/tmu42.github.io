@@ -87,8 +87,6 @@ def file_type(f=None):
 
 ####### Specific File Type Parsers ##################
 def template_parser(tfile=None, fpath="", prefix=None):
-    #print(f"Ready to parse template file: {tfile.name}")
-    
     parsed_files = []
     
     if prefix is not None:
@@ -107,14 +105,10 @@ def template_parser(tfile=None, fpath="", prefix=None):
             if newline and COMMAND.match(line):
                 cmd = COMMAND.sub(r"\1", line).strip()
                 
-                #print(f"cmd: [{cmd}]", file=sys.stderr)
-                
                 command = True
                 
                 if COM_FRAGMENT.match(cmd):
                     frag_name = resolve_fragment_file(cmd, path=fpath)
-                    
-                    #parsed_files[-1].seek(0)
                     
                     parsed_files += parse_file(frag_name, ID_FRAGMENT)
                     
@@ -135,8 +129,6 @@ def template_parser(tfile=None, fpath="", prefix=None):
                 newline = True
             else:
                 newline = False
-    
-    #parsed_files[-1].seek(0)
     
     return parsed_files
 
