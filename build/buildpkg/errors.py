@@ -8,6 +8,9 @@ MODES = {"WARNING", "ERROR"}
 class FileTypeError(Exception): pass
 class FileTypeWarning(Warning): pass
 
+#class SyntaxError(Exception): pass
+#class SyntaxWarning(Warning): pass
+
 class UnboundParameterError(Exception): pass
 class UnboundParameterWarning(Warning): pass
 
@@ -29,6 +32,18 @@ def file_type_error(message=None, mode="ERROR"):
         warnings.warn(message, FileTypeWarning, 3)
     else:
         raise FileTypeError(message)
+
+def syntax_error(message=None, mode="ERROR"):
+    if mode not in MODES:
+        raise ValueError("mode must be \"WARNING\" or \"ERROR\".")
+    
+    if message is None:
+        message = f"Syntax {mode.lower()}."
+    
+    if mode == "WARNING":
+        warnings.warn(message, SyntaxWarning, 3)
+    else:
+        raise SyntaxError(message)
 
 def unbound_parameter_error(message=None, mode="ERROR"):
     if mode not in MODES:
