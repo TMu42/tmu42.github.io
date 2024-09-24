@@ -6,7 +6,8 @@ from . import shared
 DEC_PARAM = "PARAM"
 
 
-def parametric_parser(pfile=None, fpath="", prefix=None, parse_file=None):
+def parametric_parser(pfile=None, fpath="", prefix=None, parse_file=None,
+                                                        params="", **kwargs):
     parsed_files = []
     
     if prefix is not None:

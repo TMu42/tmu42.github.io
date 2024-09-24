@@ -15,7 +15,7 @@ PARSERS = { shared.ID_TEMPLATE   : template.template_parser,
 
 
 ###### Main Parser ##########
-def parse_file(f=None, ftype=None, fpath=""):
+def parse_file(f=None, ftype=None, fpath="", params=""):
     f, my_file = acquire_file(f)
     
     try:
@@ -35,7 +35,8 @@ def parse_file(f=None, ftype=None, fpath=""):
             f"\"{ftype}\".")
     
     try:
-        parsed = PARSERS[read_ftype](f, fpath=fpath, parse_file=parse_file)
+        parsed = PARSERS[read_ftype](f, fpath=fpath,
+                                     parse_file=parse_file, params=params)
     except KeyError:
         errors.file_type_error(
             f"file \"{f.name}\" does not match any recognized file type.",

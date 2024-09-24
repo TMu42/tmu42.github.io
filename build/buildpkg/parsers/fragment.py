@@ -4,7 +4,8 @@ import os
 from . import shared
 
 
-def fragment_parser(ffile=None, fpath="", prefix=None, parse_file=None):
+def fragment_parser(ffile=None, fpath="", prefix=None, parse_file=None,
+                                                                **kwargs):
     parsed_file = tempfile.TemporaryFile(mode='w+')
     
     if prefix is not None:

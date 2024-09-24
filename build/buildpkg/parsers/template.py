@@ -7,7 +7,8 @@ from . import parametric
 from .. import errors
 
 
-def template_parser(tfile=None, fpath="", prefix=None, parse_file=None):
+def template_parser(tfile=None, fpath="", prefix=None, parse_file=None,
+                                                                **kwargs):
     parsed_files = []
     
     if prefix is not None:
