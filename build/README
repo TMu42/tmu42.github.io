@@ -181,20 +181,23 @@ The following syntax is available in parametric files:
 3. `\`  -   As with the template format, a line commencing with a backslash is
             treated as literal with the leading slash stripped. In this way, a
             literal line commencing with `:` or `\` can be achieved by
-            pre-appending a backslash. This also escapes parameter
-            substitution for the entire line. In parametric files, the
-            backslash can also be used to escape a single parameter token (or
-            rather it can be used to escape the opening of a parameter token,
-            e.g. `\<[A]>` will output the literal `<[A]>` without attempting
-            to perform substitution. Each additional `\` should add a literal
-            `\` to the output. Examples:
+            pre-appending a backslash. In parametric files, the backslash can
+            also be used to escape a single parameter token (or rather it can
+            be used to escape the opening of a parameter token, e.g. `\<[A]>`
+            will output the literal `<[A]>` without attempting to perform
+            substitution. Note that `\` only performs an escape when the
+            following character or group could have a special meaning so `\\x`
+            is the same as `\x` so long as `x` is a literal sequence.
+            Examples:
                 `::PARAM:X;`        ->  No output but parameter `X` declared.
                 `\::PARAM:X;`       ->  `::PARAM:X;`.
                 `\\::PARAM:X;`      ->  `\::PARAM:X;`.
                 `\text`             ->  `text`.
                 `\\text`            ->  `\text`.
                 `text <[A]> text`   ->  `text VALUE_BOUND_TO_A text`.
-                `\text <[A]> text`  ->  `text <[A]> text`.
-                `\\text <[A]> text` ->  `\text <[A]> text`.
+                `\:text <[A]> text` ->  `:text VALUE_BOUND_TO_A text`.
+                `\\text <[A]> text` ->  `\text VALUE_BOUND_TO_A text`.
                 `text \<[A]> <[B]>` ->  `text <[A]> VALUE_BOUND_TO_B`.
+                `text \\<[A]>`      ->  `text \VALUE_BOUND_TO_A`.
+                `text \\\<[A]>`     ->  `text \<[A]>`.
                 `text \<[<[A]>]>`   ->  `text <[VALUE_BOUND_TO_A]>`.

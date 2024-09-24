@@ -4,8 +4,8 @@
 import sys
 import re
 
-import parsers
-import errors
+from buildpkg import parsers
+from buildpkg import errors
 
 
 ID_TEMPLATE   = "::TEMPLATE;"
