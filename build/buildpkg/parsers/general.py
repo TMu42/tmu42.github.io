@@ -16,7 +16,7 @@ PARSERS = { shared.ID_TEMPLATE   : template.template_parser,
 
 ###### Main Parser ##########
 def parse_file(f=None, ftype=None, fpath="", params=""):
-    f, my_file = acquire_file(f)
+    f, my_file = _acquire_file(f)
     
     try:
         fp = f.tell()
@@ -53,7 +53,7 @@ def parse_file(f=None, ftype=None, fpath="", params=""):
 
 
 ######### File Checks and Acquisition ################
-def acquire_file(f, context="acquire_file()"):
+def _acquire_file(f, context="acquire_file()"):
     if not (isinstance(f, io.TextIOWrapper) or isinstance(f, str)):
         raise TypeError(
             f"{context} needs an open file or a string, got {type(f)}.")
@@ -61,12 +61,17 @@ def acquire_file(f, context="acquire_file()"):
     if isinstance(f, io.TextIOWrapper):
         if not f.readable():
             raise ValueError(
-                f"File object ({f.name}) is not readable (mode is {f.mode!r}. "
-                f"Try opening with mode='r'.")
+                f"File object ({f.name}) is not readable (mode is "
+                f"{f.mode!r}. Try opening with mode='r'.")
+        
+        if not f.seekable():
+            raise ValueError(
+                f"File object ({f.name}) is not seekable. Try opening with "
+                f"mode='r' or copying to a tempfile with mode='w+'.")
         
         return f, False
     
-    return open(f), True
+    return open(f, mode='r'), True
 
 
 def file_type(f=None):
@@ -79,3 +84,10 @@ def file_type(f=None):
     
     return id_tag, id_line
 
+
+
+##################### End of Code ############################################
+#
+#
+#
+##################### End of File ############################################

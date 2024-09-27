@@ -1,6 +1,7 @@
 import re
 
 
+SHEBANG = re.compile(r"^\#\!")                # #!...
 COMMAND = re.compile(r"^\s*:([^;]*);(.*)$")   # :command; comment
 ESCAPE  = re.compile(r"^(\s*)\\(.*)$")        # \literal
 
@@ -13,3 +14,11 @@ CHUNK_SIZE = 1024
 ID_TEMPLATE   = "::TEMPLATE;"
 ID_FRAGMENT   = "::FRAGMENT;"
 ID_PARAMETRIC = "::PARAMETRIC;"
+
+
+
+##################### End of Code ############################################
+#
+#
+#
+##################### End of File ############################################

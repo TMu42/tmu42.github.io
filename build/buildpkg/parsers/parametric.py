@@ -87,8 +87,8 @@ def parse_parametric_line(line, newline=True, comm=False, fpath="",
                 f"Unrecognized command {cmd}", mode="WARNING")
             
             comm = False
-        elif newline:
-            comm = False
+        #elif newline:
+        #    comm = False
         
         if not comm:
             rebuild = ""
@@ -148,3 +148,11 @@ def _params_to_dict(params=""):
                             f"\"{params}\"")
     
     return param_dict;
+
+
+
+##################### End of Code ############################################
+#
+#
+#
+##################### End of File ############################################
