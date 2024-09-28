@@ -18,35 +18,41 @@ PARSERS = { shared.ID_TEMPLATE   : template.template_parser,
 def parse_file(f=None, ftype=None, fpath="", params=""):
     f, my_file = _acquire_file(f)
     
-    try:
+    if not my_file:
         fp = f.tell()
-    except io.UnsupportedOperation:
-        fp = None
-    else:
+        
         f.seek(0)
     
-    read_ftype, first_line = file_type(f)
+    line = f.readline(shared.CHUNK_SIZE)
     
-    if ftype is not None and \
-       ftype != shared.ID_FRAGMENT and \
-       ftype != read_ftype:
-        errors.file_type_error(
-            f"file \"{f.name}\" does not match requested file type "
-            f"\"{ftype}\".")
+    if shared.SHEBANG.match(line):
+        line = f.readline(shared.CHUNK_SIZE)
     
-    try:
-        parsed = PARSERS[read_ftype](f, fpath=fpath,
-                                     parse_file=parse_file, params=params)
-    except KeyError:
-        errors.file_type_error(
-            f"file \"{f.name}\" does not match any recognized file type.",
-            mode="WARNING")
-        
-        parsed = fragment.fragment_parser(f, fpath=fpath, prefix=first_line)
+    if shared.COMMAND.match(line):
+        command = shared.parse_command(line)
+    
+#    read_ftype, first_line = file_type(f)
+#    
+#    if ftype is not None and \
+#       ftype != shared.ID_FRAGMENT and \
+#       ftype != read_ftype:
+#        errors.file_type_error(
+#            f"file \"{f.name}\" does not match requested file type "
+#            f"\"{ftype}\".")
+#    
+#    try:
+#        parsed = PARSERS[read_ftype](f, fpath=fpath,
+#                                     parse_file=parse_file, params=params)
+#    except KeyError:
+#        errors.file_type_error(
+#            f"file \"{f.name}\" does not match any recognized file type.",
+#            mode="WARNING")
+#        
+#        parsed = fragment.fragment_parser(f, fpath=fpath, prefix=first_line)
     
     if my_file:
         f.close()
-    elif fp is not None:
+    else:
         f.seek(fp)
     
     return parsed
