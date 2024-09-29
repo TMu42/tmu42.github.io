@@ -1,7 +1,12 @@
 import tempfile
+import sys
 import os
 
 from . import shared
+
+
+def parse_line(line, outfile=sys.stdout, **kwargs):
+    pass
 
 
 def fragment_parser(ffile=None, fpath="", prefix=None, parse_file=None,

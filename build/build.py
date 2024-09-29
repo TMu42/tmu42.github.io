@@ -12,15 +12,15 @@ from buildpkg import errors
 def main(args):
     infile, inpath, outfile = _acquire_files(args)
     
-    parsed = parsers.parse_file(infile, fpath=inpath)
+    parsers.parse_file(infile, fpath=inpath, outfile=outfile)
     
-    for pfile in parsed:
-        pfile.seek(0)
-        
-        while (chunk := pfile.read(parsers.CHUNK_SIZE)):
-            outfile.write(chunk)
-        
-        pfile.close()
+#    for pfile in parsed:
+#        pfile.seek(0)
+#        
+#        while (chunk := pfile.read(parsers.CHUNK_SIZE)):
+#            outfile.write(chunk)
+#        
+#        pfile.close()
     
     infile.close()
     outfile.close()

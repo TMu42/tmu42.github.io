@@ -1,4 +1,5 @@
 import tempfile
+import sys
 import re
 
 from . import shared
@@ -14,6 +15,10 @@ BOOL_STR = { "True" : True, "False" : False }
 
 R_KEY = 0
 R_VAL = 1
+
+
+def parse_line(line, outfile=sys.stdout, params={}, **kwargs):
+    pass
 
 
 def parametric_parser(pfile=None, fpath="", prefix=None, parse_file=None,

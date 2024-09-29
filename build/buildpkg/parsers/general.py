@@ -1,3 +1,4 @@
+import sys
 import io
 import re
 
@@ -9,14 +10,16 @@ from . import parametric
 from .. import errors
 
 
-PARSERS = { shared.ID_TEMPLATE   : template.template_parser,
-            shared.ID_FRAGMENT   : fragment.fragment_parser,
-            shared.ID_PARAMETRIC : parametric.parametric_parser }
+PARSERS = { shared.ID_TEMPLATE   : template.parse_line,
+            shared.ID_FRAGMENT   : fragment.parse_line,
+            shared.ID_PARAMETRIC : parametric.parse_line }
 
 
 ###### Main Parser ##########
-def parse_file(f=None, ftype=None, fpath="", params=""):
+def parse_file(f=None, ftype=None, fpath="", params={}, outfile=sys.stdout):
     f, my_file = _acquire_file(f)
+    
+    file_type == None
     
     if not my_file:
         fp = f.tell()
@@ -29,7 +32,23 @@ def parse_file(f=None, ftype=None, fpath="", params=""):
         line = f.readline(shared.CHUNK_SIZE)
     
     if shared.COMMAND.match(line):
-        command = shared.parse_command(line)
+        command = shared.parse_command(line)[1:-1] # Ignore indent and comment
+        
+        if len(command) > 1 and command[0] == "" and \
+                                command[1] in shared.FILE_IDS:
+            file_type = command[1]
+    
+    if file_type is None:
+        errors.file_type_error(
+            f"Invalid file declaration: `{line}`: assuming fragment file.",
+            mode="WARNING")
+        
+        file_type = shared.ID_FRAGMENT
+        
+        outfile.write(line)
+    
+    while (line := f.readline(shared.CHUNK_SIZE)):
+        PARSERS[file_type](line, )
     
 #    read_ftype, first_line = file_type(f)
 #    
@@ -55,7 +74,7 @@ def parse_file(f=None, ftype=None, fpath="", params=""):
     else:
         f.seek(fp)
     
-    return parsed
+#    return parsed
 
 
 ######### File Checks and Acquisition ################
