@@ -1,0 +1,16 @@
+::FRAGMENT; Comment text should not disrupt file type declaration.
+    <link rel="stylesheet" href="/css/main.css?r=83" />
+    <link rel="stylesheet" href="/css/menu.css?r=83" />
+    <link rel="stylesheet" href="/css/grid.css?r=83" />
+    <link rel="stylesheet" href="/css/display.css?r=83" />
+    
+    <link rel="icon" href="/favicon.png" type="image/png" id="favicon-link" />
+    
+    <script src="/script/main.js?r=83"  type="text/javascript"></script>
+    <script src="/script/theme.js?r=83" type="text/javascript" defer="defer">
+    </script>
+    <script src="/script/menu.js?r=83"  type="text/javascript" defer="defer">
+    </script>
+    <script src="/script/grid.js?r=83"  type="text/javascript" defer="defer">
+    </script>
+  </head>

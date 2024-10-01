@@ -1,0 +1,22 @@
+::FRAGMENT;
+    <div id="display-box">
+      <div id="display-close" class="display-button">
+        <span class="button-text">X</span>
+      </div>
+      
+      <div id=display-left class="display-button">
+        <span class="button-text">&lt;</span>
+      </div>
+      
+      <div id=display-right class="display-button">
+        <span class="button-text">&gt;</span>
+      </div>
+      
+      <div id="display-inner">
+        <span id="display-title"></span>
+        
+        <img draggable="false" id="display-image" />
+        
+        <span id="display-text"></span>
+      </div>
+    </div>
