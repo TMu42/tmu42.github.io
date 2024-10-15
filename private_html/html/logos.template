@@ -7,7 +7,6 @@
   <body id="body">
     :FRAGMENT:title.fragment;
     
-    :;FRAGMENT:menu.fragment;
     :TEMPLATE:menu.template;
     
     :FRAGMENT:display.fragment;
