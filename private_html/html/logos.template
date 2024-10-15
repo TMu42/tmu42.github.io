@@ -5,11 +5,11 @@
   :PARAMETRIC:head.parametric::TITLE=TMu42 - Logos:REV=83;
   
   <body id="body">
-    :FRAGMENT:title;
+    :FRAGMENT:title.fragment;
     
-    :FRAGMENT:menu;
+    :FRAGMENT:menu.fragment;
     
-    :FRAGMENT:display;
+    :FRAGMENT:display.fragment;
     
     <h2 id="Emu Logo">Emu Logo</h2>
     
@@ -90,6 +90,6 @@
       </p>
     </div>
     
-    :FRAGMENT:footer;
+    :FRAGMENT:footer.fragment;
   </body>
 </html>

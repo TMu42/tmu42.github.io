@@ -5,9 +5,9 @@
   :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=83;
   
   <body id="body">
-    :FRAGMENT:title;
+    :FRAGMENT:title.fragment;
     
-    :FRAGMENT:menu;
+    :FRAGMENT:menu.fragment;
     
     <h2>Home</h2>
     
@@ -74,6 +74,6 @@
       </ul>
     </div>
     
-    :FRAGMENT:footer;
+    :FRAGMENT:footer.fragment;
   </body>
 </html>
