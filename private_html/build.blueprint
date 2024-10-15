@@ -1,9 +1,0 @@
-#! /usr/bin/local/webuild
-::BLUEPRINT;
-
-
-:; /
-    :TEMPLATE:html/home.template:public_html/index.html;        HTML
-
-:; /logos
-    :TEMPLATE:html/logos.template:public_html/logos/index.html; HTML

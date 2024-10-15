@@ -1,23 +1,15 @@
-::TEMPLATE;
+::TEMPLATE;     -> /index.html
 <!DOCTYPE html>
-
-<!--/ (Home Page)-->
 
 <html>
   :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=83;
   
   <body id="body">
-    <!--Constant Page Header Region--><!--Constant Page Header Region-->
-    <!--Site Title-->
-    :FRAGMENT:title;
-    <!--/Site Title-->
+    :FRAGMENT:title.fragment;
     
-    <!--Menu Bar-->
-    :FRAGMENT:menu;
-    <!--/Menu Bar-->
-    <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
+    :;FRAGMENT:menu.fragment;
+    :TEMPLATE:menu.template;
     
-    <!--Variable Page Body Region--><!--Variable Page Body Region-->
     <h2>Home</h2>
     
     <div class="page-content">
@@ -82,10 +74,7 @@
         <li>A repository of sorting algorithms implemented in C.</li>
       </ul>
     </div>
-    <!--/Variable Page Body Region--><!--/Variable Page Body Region-->
     
-    <!--Constant Page Footer Region--><!--Constant Page Footer Region-->
-    :FRAGMENT:footer;
-    <!--/Constant Page Footer Region--><!--/Constant Page Footer Region-->
+    :FRAGMENT:footer.fragment;
   </body>
 </html>

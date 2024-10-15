@@ -1,0 +1,23 @@
+::PARAMETRIC;
+::PARAM:TITLE:True;
+::PARAM:REV::999;
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <title><[TITLE]></title>
+    
+    <link rel="stylesheet" href="/css/main.css?r=<[REV]>" />
+    <link rel="stylesheet" href="/css/menu.css?r=<[REV]>" />
+    <link rel="stylesheet" href="/css/grid.css?r=<[REV]>" />
+    <link rel="stylesheet" href="/css/display.css?r=<[REV]>" />
+    
+    <link rel="icon" href="/favicon.png" type="image/png" id="favicon-link" />
+    
+    <script src="/script/main.js?r=<[REV]>"  type="text/javascript"></script>
+    <script src="/script/theme.js?r=<[REV]>" type="text/javascript" defer="defer">
+    </script>
+    <script src="/script/menu.js?r=<[REV]>"  type="text/javascript" defer="defer">
+    </script>
+    <script src="/script/grid.js?r=<[REV]>"  type="text/javascript" defer="defer">
+    </script>
+  </head>
