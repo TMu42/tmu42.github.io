@@ -7,7 +7,8 @@
   <body id="body">
     :FRAGMENT:title.fragment;
     
-    :FRAGMENT:menu.fragment;
+    :;FRAGMENT:menu.fragment;
+    :TEMPLATE:menu.template;
     
     <h2>Home</h2>
     

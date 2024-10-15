@@ -1,0 +1,8 @@
+::PARAMETRIC;
+::PARAM:ID:False;
+::PARAM:TITLE:False;
+::PARAM:LABEL:True;
+::PARAM:SQUARE:False;
+          <td class="menu-bar<[SQUARE]>" id=<[ID]> title=<[TITLE]>>
+            <[LABEL]>
+          </td>
