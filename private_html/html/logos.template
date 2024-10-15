@@ -1,23 +1,14 @@
-::TEMPLATE;
+::TEMPLATE;     -> /logos/index.html
 <!DOCTYPE html>
-
-<!--/logos-->
 
 <html>
   :PARAMETRIC:head.parametric::TITLE=TMu42 - Logos:REV=83;
   
   <body id="body">
-    <!--Constant Page Header Region--><!--Constant Page Header Region-->
-    <!--Site Title-->
     :FRAGMENT:title;
-    <!--/Site Title-->
     
-    <!--Menu Bar-->
     :FRAGMENT:menu;
-    <!--/Menu Bar-->
-    <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
     
-    <!--Variable Page Body Region--><!--Variable Page Body Region-->
     :FRAGMENT:display;
     
     <h2 id="Emu Logo">Emu Logo</h2>
@@ -98,10 +89,7 @@
         flightless, avian marvel.
       </p>
     </div>
-    <!--/Variable Page Body Region--><!--/Variable Page Body Region-->
     
-    <!--Constant Page Footer Region--><!--Constant Page Footer Region-->
     :FRAGMENT:footer;
-    <!--/Constant Page Footer Region--><!--/Constant Page Footer Region-->
   </body>
 </html>
