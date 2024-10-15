@@ -4,21 +4,16 @@
 <!--/ (Home Page)-->
 
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-    <title>TMu42 - Home</title>
-
-    :head;
+  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=83;
   
   <body id="body">
     <!--Constant Page Header Region--><!--Constant Page Header Region-->
     <!--Site Title-->
-    :title;
+    :FRAGMENT:title;
     <!--/Site Title-->
     
     <!--Menu Bar-->
-    :menu;
+    :FRAGMENT:menu;
     <!--/Menu Bar-->
     <!--/Constant Page Header Region--><!--/Constant Page Header Region-->
     
@@ -90,7 +85,7 @@
     <!--/Variable Page Body Region--><!--/Variable Page Body Region-->
     
     <!--Constant Page Footer Region--><!--Constant Page Footer Region-->
-    :footer;
+    :FRAGMENT:footer;
     <!--/Constant Page Footer Region--><!--/Constant Page Footer Region-->
   </body>
 </html>
