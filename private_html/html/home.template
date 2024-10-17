@@ -2,12 +2,14 @@
 <!DOCTYPE html>
 
 <html>
-  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=79;
+  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=78;
   
   <body id="body">
     :FRAGMENT:title.fragment;
     
     :TEMPLATE:menu.template;
+    
+    :FRAGMENT:display.fragment;
     
     <h2>Home</h2>
     
@@ -40,7 +42,24 @@
     
     <h2 id="Featured Projects">Featured Projects</h2>
     
-    <div class="page-content"></div>
+    <div class="page-content page-grid">
+      :PARAMETRIC:grid.parametric:\
+          :FILE="/images/matrix-life.png"\
+          :TITLE=<a href\\="/matrix-life">Matrix Life</a><br>\
+                 (<a href\\="https\://github.com/TMu42/matrix-life">\
+                    matrix-life\
+                  </a>)\
+          :DESCRIPTION=Cellular Automata implemented with Linear Algebra \
+                       using a Model-View-Controller design pattern.;
+      
+      :PARAMETRIC:grid.parametric:\
+          :TITLE=<a href\\="/web-build">Web Build</a><br>\
+                 (<a href\\="https\://github.com/TMu42/web-build">\
+                    web-build\
+                  </a>)\
+          :DESCRIPTION=Tools for automating the construction of web based \
+                       code files from reusable elements.;
+    </div>
     
     <h2 id="Active Projects">Active Projects</h2>
     
