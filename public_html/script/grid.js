@@ -62,7 +62,7 @@ function setDisplay(set, idx) {
             displayTxt.innerHTML = "";
         }
         
-        console.log(displayTtl.innerText);
+        //console.log(displayTtl.innerText);
         
         return true;
     }
