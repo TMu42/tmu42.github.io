@@ -51,9 +51,9 @@ function setDisplay(set, idx) {
         }
         
         if(typeof ttl !== "undefined" && ttl !== null) {
-            displayTtl.innerText = ttl.innerText;
+            displayTtl.innerHTML = ttl.innerHTML;
         } else {
-            displayTtl.innerText = "";
+            displayTtl.innerHTML = "";
         }
         
         if(typeof txt !== "undefined" && txt !== null) {

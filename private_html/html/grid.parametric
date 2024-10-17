@@ -9,8 +9,6 @@
           
           <span class="grid-text"><[TITLE]></span>
           
-          <span class="grid-display-text">
-            <[DESCRIPTION]>
-          </span>
+          <span class="grid-display-text"><[DESCRIPTION]></span>
         </div>
       </div>
