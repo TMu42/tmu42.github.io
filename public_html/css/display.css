@@ -116,6 +116,10 @@
     height: 50px;
 }
 
+#display-close:hover {
+    background-color: light-dark(#902c4a, #a03050);
+}
+
 #display-close .button-text {
     bottom: 0px;
 }
