@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html>
-  :PARAMETRIC:head.parametric::TITLE=TMu42 - Logos:REV=83;
+  :PARAMETRIC:head.parametric::TITLE=TMu42 - Logos:REV=79;
   
   <body id="body">
     :FRAGMENT:title.fragment;
@@ -14,13 +14,25 @@
     <h2 id="Emu Logo">Emu Logo</h2>
     
     <div class="page-content page-grid">
-      :PARAMETRIC:grid.parametric::FILE="/images/emu-logo-black.png":TITLE=Emu Logo (Black):DESCRIPTION=The Emu Logo in black (#000000).;
+      :PARAMETRIC:grid.parametric:\
+                    :FILE="/images/emu-logo-black.png"\
+                    :TITLE=Emu Logo (Black)\
+                    :DESCRIPTION=The Emu Logo in black (#000000).;
       
-      :PARAMETRIC:grid.parametric::FILE="/images/emu-logo-dark.png":TITLE=Emu Logo (Dark):DESCRIPTION=The Emu Logo in dark mauve-grey (#484050).;
+      :PARAMETRIC:grid.parametric:\
+                    :FILE="/images/emu-logo-dark.png"\
+                    :TITLE=Emu Logo (Dark)\
+                    :DESCRIPTION=The Emu Logo in dark mauve-grey (#484050).;
       
-      :PARAMETRIC:grid.parametric::FILE="/images/emu-logo-light.png":TITLE=Emu Logo (Light):DESCRIPTION=The Emu Logo in light mauve-grey (#908088).;
+      :PARAMETRIC:grid.parametric:\
+                    :FILE="/images/emu-logo-light.png"\
+                    :TITLE=Emu Logo (Light)\
+                    :DESCRIPTION=The Emu Logo in light mauve-grey (#908088).;
       
-      :PARAMETRIC:grid.parametric::FILE="/images/emu-logo-white.png":TITLE=Emu Logo (White):DESCRIPTION=The Emu Logo in white (#FFFFFF).;
+      :PARAMETRIC:grid.parametric:\
+                    :FILE="/images/emu-logo-white.png"\
+                    :TITLE=Emu Logo (White)\
+                    :DESCRIPTION=The Emu Logo in white (#FFFFFF).;
     </div>
     
     <div class="page-content">

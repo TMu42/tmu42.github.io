@@ -28,14 +28,25 @@
 #display-inner {
     margin: auto;
     
-    height: calc(100% -  10px);
+    position: relative;
+    
+    height: calc(100% -  20px);
     width:  calc(100% - 120px);
     
-    overflow: auto;
+    top: 10px;
+    
+    /*overflow: auto;*/
 }
 
 #display-image {
     display: block;
+    
+    position: absolute;
+    
+    top:  50%;
+    left: 50%;
+    
+    transform: translateX(-50%) translateY(-50%);
     
     max-width:  90%;
     max-height: 70%;
@@ -44,11 +55,27 @@
 }
 
 #display-title {
+    position: absolute;
+    
+    top: 0px;
+    
+    width: 100%;
+    
     font-size: 1.8rem;
 }
 
 #display-text {
+    position: absolute;
+    
+    top: calc(85% + 1em);
+    
+    width: 100%;
+    
+    max-height: 10%;
+    
     font-size: 1rem;
+    
+    overflow: auto;
 }
 
 

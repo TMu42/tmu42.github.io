@@ -2,21 +2,40 @@
     <div id="menu-bar">
       <table id="menu-bar-table">
         <tr>
-          :PARAMETRIC:menu.parametric::ID="usr":TITLE="TMu42@GitHub":LABEL=&#x269b\;&#xFE0E\;:SQUARE= menu-square;      atom '⚛' + text version modifier
+          :PARAMETRIC:menu.parametric::ID="usr"\
+                                      :TITLE="TMu42@GitHub"\
+                                      :LABEL=&#x269b\;&#xFE0E\;\
+                                      :SQUARE= menu-square\
+          ;     atom '⚛' + text version modifier
           
-          :PARAMETRIC:menu.parametric::ID="home":TITLE="Home":LABEL=&#x2302\;&#xFE0E\;:SQUARE= menu-square;     house '⌂' + text version modifier
+          :PARAMETRIC:menu.parametric::ID="home"\
+                                      :TITLE="Home"\
+                                      :LABEL=&#x2302\;&#xFE0E\;\
+                                      :SQUARE= menu-square\
+          ;     house '⌂' + text version modifier
           
-          :PARAMETRIC:menu.parametric::ID="featured":TITLE="Featured":LABEL=Featured;
+          :PARAMETRIC:menu.parametric::ID="featured"\
+                                      :TITLE="Featured"\
+                                      :LABEL=Featured;
           
-          :PARAMETRIC:menu.parametric::ID="active":TITLE="Active":LABEL=Active;
+          :PARAMETRIC:menu.parametric::ID="active"\
+                                      :TITLE="Active"\
+                                      :LABEL=Active;
           
-          :PARAMETRIC:menu.parametric::ID="future":TITLE="Future":LABEL=Future;
+          :PARAMETRIC:menu.parametric::ID="future"\
+                                      :TITLE="Future"\
+                                      :LABEL=Future;
           
           <!--
-          :PARAMETRIC:menu.parametric::TITLE="Nothing":LABEL=Coming Soon...;
+          :PARAMETRIC:menu.parametric::TITLE="Nothing"\
+                                      :LABEL=Coming Soon...;
           -->
           
-          :PARAMETRIC:menu.parametric::ID="hamburger":TITLE="Menu":LABEL=&#x2630\;&#xFE0E\;:SQUARE= menu-square;        hamburger '☰' + text version modifier
+          :PARAMETRIC:menu.parametric::ID="hamburger"\
+                                      :TITLE="Menu"\
+                                      :LABEL=&#x2630\;&#xFE0E\;\
+                                      :SQUARE= menu-square\
+          ;        hamburger '☰' + text version modifier
         </tr>
       </table>
       
