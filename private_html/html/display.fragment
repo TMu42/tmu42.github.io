@@ -13,10 +13,10 @@
       </div>
       
       <div id="display-inner">
-        <span id="display-title"></span>
+        <div id="display-title"></div>
         
         <img draggable="false" id="display-image" />
         
-        <span id="display-text"></span>
+        <div id="display-text"></div>
       </div>
     </div>
