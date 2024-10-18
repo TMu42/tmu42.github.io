@@ -9,6 +9,8 @@ const lightButton = document.getElementById("light-button");
 const  autoButton = document.getElementById( "auto-button");
 const  darkButton = document.getElementById( "dark-button");
 
+const defaultIcons = [...document.getElementsByClassName("default-icon")];
+
 
 lightButton.addEventListener("click", changeTheme);
 autoButton.addEventListener("click", changeTheme);
@@ -50,10 +52,18 @@ function updateTheme() {
         favLnk.href = "/images/emu-logo-white.png";
         titIm0.src = "/images/emu-logo-light.png";
         titIm1.src = "/images/emu-logo-light.png";
+        
+        for(var i = 0; i < defaultIcons.length; i++) {
+            defaultIcons[i].src = "/images/default-white.png";
+        }
     } else {
         favLnk.href = "/images/emu-logo-black.png";
         titIm0.src = "/images/emu-logo-dark.png";
         titIm1.src = "/images/emu-logo-dark.png";
+        
+        for(var i = 0; i < defaultIcons.length; i++) {
+            defaultIcons[i].src = "/images/default-black.png";
+        }
     }
 };
 

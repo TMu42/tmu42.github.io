@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html>
-  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=77;
+  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=76;
   
   <body id="body">
     :FRAGMENT:title.fragment;
@@ -58,7 +58,8 @@
                     web-build\
                   </a>)\
           :DESCRIPTION=Tools for automating the construction of web based \
-                       code files from reusable elements.;
+                       code files from reusable elements.\
+          :DEFAULT=default-icon;
     </div>
     
     <h2 id="Active Projects">Active Projects</h2>

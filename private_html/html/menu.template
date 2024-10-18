@@ -5,13 +5,13 @@
           :PARAMETRIC:menu.parametric::ID="usr"\
                                       :TITLE="TMu42@GitHub"\
                                       :LABEL=&#x269b\;&#xFE0E\;\
-                                      :SQUARE= menu-square\
+                                      :SQUARE=menu-square\
           ;     atom '⚛' + text version modifier
           
           :PARAMETRIC:menu.parametric::ID="home"\
                                       :TITLE="Home"\
                                       :LABEL=&#x2302\;&#xFE0E\;\
-                                      :SQUARE= menu-square\
+                                      :SQUARE=menu-square\
           ;     house '⌂' + text version modifier
           
           :PARAMETRIC:menu.parametric::ID="featured"\
@@ -34,7 +34,7 @@
           :PARAMETRIC:menu.parametric::ID="hamburger"\
                                       :TITLE="Menu"\
                                       :LABEL=&#x2630\;&#xFE0E\;\
-                                      :SQUARE= menu-square\
+                                      :SQUARE=menu-square\
           ;        hamburger '☰' + text version modifier
         </tr>
       </table>

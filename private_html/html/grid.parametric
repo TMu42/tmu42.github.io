@@ -1,11 +1,13 @@
 ::PARAMETRIC;
 ::PARAM:FILE::"/images/default.png";
+::PARAM:DEFAULT:False;
 ::PARAM:TITLE:False;
 ::PARAM:ALT::Unavailable;
 ::PARAM:DESCRIPTION:False;
       <div class="grid-box">
         <div class="inner-box">
-          <img class="grid-image" src=<[FILE]> draggable="false" />
+          <img class="grid-image <[DEFAULT]>" src=<[FILE]>
+                                              alt=<[ALT]> draggable="false" />
           
           <span class="grid-text"><[TITLE]></span>
           
