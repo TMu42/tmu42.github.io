@@ -4,11 +4,11 @@
         <span class="button-text">X</span>
       </div>
       
-      <div id=display-left class="display-button">
+      <div id="display-left" class="display-button">
         <span class="button-text">&lt;</span>
       </div>
       
-      <div id=display-right class="display-button">
+      <div id="display-right" class="display-button">
         <span class="button-text">&gt;</span>
       </div>
       
