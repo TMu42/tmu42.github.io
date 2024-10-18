@@ -65,9 +65,15 @@ function setDisplay(set, idx) {
         if(typeof img !== "undefined" && img !== null) {
             displayImg.src = img.src;
             displayImg.alt = img.src.split('/')[img.src.split('/').length - 1];
+            
+            if(img.classList.contains("default-icon")) {
+                displayImg.classList.add("default-icon");
+            } else {
+                displayImg.classList.remove("default-icon");
+            }
         } else {
             displayImg.src = "";
-            displayImg.alt = "T&mu;"
+            displayImg.alt = "T&mu;";
         }
         
         if(typeof ttl !== "undefined" && ttl !== null) {

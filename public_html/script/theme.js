@@ -9,7 +9,7 @@ const lightButton = document.getElementById("light-button");
 const  autoButton = document.getElementById( "auto-button");
 const  darkButton = document.getElementById( "dark-button");
 
-const defaultIcons = [...document.getElementsByClassName("default-icon")];
+var defaultIcons = [...document.getElementsByClassName("default-icon")];
 
 
 lightButton.addEventListener("click", changeTheme);
@@ -48,6 +48,8 @@ function detectTheme() {
 
 
 function updateTheme() {
+    defaultIcons = [...document.getElementsByClassName("default-icon")];
+    
     if(mode == "dark" || (mode == "auto" && dark.matches)) {
         favLnk.href = "/images/emu-logo-white.png";
         titIm0.src = "/images/emu-logo-light.png";
