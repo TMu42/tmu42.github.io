@@ -62,8 +62,33 @@
     
     <div class="page-content page-grid">
       :PARAMETRIC:grid.parametric:\
-            :FILE="/images/default.png"\
-            :TITLE=Default Icon\
+            :FILE="/images/default-black.png"\
+            :TITLE=Default Icon (Black)\
+            :DESCRIPTION=This default icon is brought courtesy of \
+                         <a href\\=https\://thenounproject.com/niceandserious>\
+                           Nice and Serious\
+                         </a> \
+                         sourced under the \
+                         <a href\\=\
+                          https\://en.wikipedia.org/wiki/en\:Creative_Commons>\
+                           Creative Commons\
+                         </a> \
+                         <a href\\=\
+                          https\://creativecommons.org/publicdomain/zero/1.0/\
+                                                                      deed.en>\
+                           CC0 1.0 Universal Public Domain Dedication\
+                         </a> \
+                         from \
+                         <a href\\=\
+                          https\://commons.wikimedia.org/wiki/\
+                                File\:Gear_%2889033%29_-_The_Noun_Project.svg>\
+                           Wikimedia Commons\
+                         </a> \
+                         with thanks.;
+      
+      :PARAMETRIC:grid.parametric:\
+            :FILE="/images/default-white.png"\
+            :TITLE=Default Icon (White)\
             :DESCRIPTION=This default icon is brought courtesy of \
                          <a href\\=https\://thenounproject.com/niceandserious>\
                            Nice and Serious\
