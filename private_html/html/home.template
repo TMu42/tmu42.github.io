@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html>
-  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=78;
+  :PARAMETRIC:head.parametric::TITLE=TMu42 - Home:REV=77;
   
   <body id="body">
     :FRAGMENT:title.fragment;
@@ -35,8 +35,8 @@
         projects corespond to public repositories on GitHub, links to both the
         repository and the project page should be available. Projects which
         are not GitHub repositories will provide only a project page link
-        whilst projects which are not yet ready for publication (pre MVP) may
-        or may not furnish a project page link.
+        whilst projects which are not yet ready for publication may or may not
+        furnish a project page link.
       </p>
     </div>
     
@@ -90,7 +90,7 @@
     <div class="page-content">
       <p>
         These projects are currently in development and will be published when
-        they reach MVP status:
+        they are sufficiently developed to display:
       </p>
       
       <ul class="page-content">

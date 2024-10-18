@@ -9,11 +9,17 @@ const displayRight = document.getElementById("display-right");
 
 const grids = document.getElementsByClassName("page-grid");
 
-const gridBoxes = grids[0].getElementsByClassName("inner-box");
+gridBoxes = [];
+
+for(var i = 0; i < grids.length; i++) {
+    gridBoxes.push(grids[i].getElementsByClassName("inner-box"));
+}
 
 const setGridActions = () => {
     for(var i = 0; i < gridBoxes.length; i++) {
-        gridBoxes[i].addEventListener("click", gridClick);
+        for(var j = 0; j < gridBoxes[i].length; j++) {
+            gridBoxes[i][j].addEventListener("click", gridClick);
+        }
     }
     
     document.addEventListener("click", closeDisplay);
@@ -23,14 +29,32 @@ const setGridActions = () => {
 };
 
 
-var displayGrid = gridBoxes;
+//var displayGrid = gridBoxes;
+var displayGrid = -1;
 var displayElement = -1;
 
 
 function gridClick(event) {
-    displayElement = [...displayGrid].indexOf(event.currentTarget);
+    displayGrid = -1
+    displayElement = -1
     
-    if(setDisplay(displayGrid, displayElement)) {
+    for(var i = 0; i < gridBoxes.length; i++) {
+        displayElement = [...gridBoxes[i]].indexOf(event.currentTarget);
+        
+        if(displayElement == -1) {
+            continue;
+        } else {
+            displayGrid = i;
+            
+            break;
+        }
+    }
+    
+    console.log(displayGrid)
+    console.log(displayElement)
+  //displayElement = [...gridBoxes[displayGrid]].indexOf(event.currentTarget);
+    
+    if(setDisplay(gridBoxes[displayGrid], displayElement)) {
         displayBox.style.display = "block";
     }
 };
@@ -62,7 +86,7 @@ function setDisplay(set, idx) {
             displayTxt.innerHTML = "";
         }
         
-        console.log(displayTtl.innerText);
+        //console.log(displayTtl.innerText);
         
         return true;
     }
@@ -75,11 +99,11 @@ function nextDisplay(event) {
     if(displayElement != -1) {
         displayElement++;
         
-        if(displayElement == displayGrid.length) {
+        if(displayElement == gridBoxes[displayGrid].length) {
             displayElement = 0;
         }
         
-        setDisplay(displayGrid, displayElement);
+        setDisplay(gridBoxes[displayGrid], displayElement);
     }
 };
 
@@ -89,10 +113,10 @@ function previousDisplay(event) {
         displayElement--;
         
         if(displayElement == -1) {
-            displayElement = displayGrid.length - 1;
+            displayElement = gridBoxes[displayGrid].length - 1;
         }
         
-        setDisplay(displayGrid, displayElement);
+        setDisplay(gridBoxes[displayGrid], displayElement);
     }
 };
 
@@ -104,8 +128,10 @@ function closeDisplay(event) {
     var gridChild = [];
     
     for(var i = 0; i < gridBoxes.length; i++) {
-        gridChild = [...gridChild, gridBoxes[i],
-                     ...getDescendants(gridBoxes[i])];
+        for(var j = 0; j < gridBoxes[i].length; j++) {
+            gridChild = [...gridChild, gridBoxes[i][j],
+                         ...getDescendants(gridBoxes[i][j])];
+        }
     }
     
     if(closeChild.includes(event.target)
