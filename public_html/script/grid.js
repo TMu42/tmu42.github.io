@@ -50,10 +50,6 @@ function gridClick(event) {
         }
     }
     
-    console.log(displayGrid)
-    console.log(displayElement)
-  //displayElement = [...gridBoxes[displayGrid]].indexOf(event.currentTarget);
-    
     if(setDisplay(gridBoxes[displayGrid], displayElement)) {
         displayBox.style.display = "block";
     }
