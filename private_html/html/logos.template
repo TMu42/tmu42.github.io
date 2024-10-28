@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html>
-  :PARAMETRIC:head.parametric::TITLE=TMu42 - Logos:REV=75;
+  :PARAMETRIC:head.parametric::TITLE=TMu42 - Logos:REV=74;
   
   <body id="body">
     :FRAGMENT:title.fragment;
@@ -56,6 +56,32 @@
         acknowledgement of the significance of the emu below. It is truely a
         flightless, avian marvel.
       </p>
+    </div>
+    
+    <h2 id="Project Logos">Project Logos</h2>
+    
+    <div class="page-content page-grid">
+      :PARAMETRIC:grid.parametric:\
+            :FILE="/images/matrix-life.png"\
+            :TITLE=Matrix Life Logo\
+            :DESCRIPTION=Project logo for \
+                         <a href\\=/matrix-life>\
+                           Matrix Life\
+                         </a> \
+                         (<a href\\=https\://github.com/TMu42/matrix-life>\
+                           matrix-life\
+                         </a>).;
+      
+      :PARAMETRIC:grid.parametric:\
+            :FILE="/images/matrix-life.png"\
+            :TITLE=Matrix Life Logo\
+            :DESCRIPTION=Project logo for \
+                         <a href\\=/matrix-life>\
+                           Matrix Life\
+                         </a> \
+                         (<a href\\=https\://github.com/TMu42/matrix-life>\
+                           matrix-life\
+                         </a>).;
     </div>
     
     <h2 id="Other Logos">Other Logos</h2>
